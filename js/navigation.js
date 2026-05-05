@@ -64,7 +64,10 @@ const VitoraNavigation = (() => {
 
   function updateNavigation(activeId) {
     navLinks.forEach((link) => {
-      const targetId = link.getAttribute("href").replace("#", "");
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
+
+      const targetId = href.replace("#", "");
       link.classList.toggle("active", targetId === activeId);
     });
   }
@@ -85,6 +88,13 @@ const VitoraNavigation = (() => {
   }
 
   function initSectionObserver() {
+    if (!sections.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setActiveSection(getSectionIndexFromScroll());
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -110,7 +120,9 @@ const VitoraNavigation = (() => {
     anchorLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         const targetId = link.getAttribute("href");
-        const targetElement = document.querySelector(targetId);
+        if (!targetId || targetId.length <= 1) return;
+
+        const targetElement = document.getElementById(targetId.slice(1));
 
         if (!targetElement) return;
 
@@ -144,9 +156,9 @@ const VitoraNavigation = (() => {
     window.addEventListener("keydown", (event) => {
       const target = event.target;
       const isTyping =
-        target.tagName === "INPUT" ||
-        target.tagName === "TEXTAREA" ||
-        target.isContentEditable;
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.isContentEditable;
 
       if (isTyping) return;
 
