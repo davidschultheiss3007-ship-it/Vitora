@@ -48,7 +48,7 @@
   margin-bottom: 4px;
   font-size: 1.75rem;
   line-height: 1;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .stat-strip span,
@@ -86,7 +86,7 @@
   width: 150px;
   padding: 14px;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   background: rgba(5, 8, 7, 0.72);
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
@@ -221,7 +221,7 @@ html[data-theme="light"] .floating-chip {
   border-radius: 50%;
   background:
     radial-gradient(circle at center, #10241b 0 54%, transparent 55%),
-    conic-gradient(var(--primary) 0 87%, rgba(255, 255, 255, 0.09) 87% 100%);
+    conic-gradient(var(--primary) 0 var(--score-percent, 87%), rgba(255, 255, 255, 0.09) var(--score-percent, 87%) 100%);
 }
 
 .score-ring div {
@@ -237,7 +237,7 @@ html[data-theme="light"] .floating-chip {
 
 .score-ring strong {
   font-size: 2.35rem;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
 }
 
 .score-ring span {
@@ -259,7 +259,7 @@ html[data-theme="light"] .floating-chip {
   gap: 16px;
   padding: 13px 14px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -279,7 +279,7 @@ html[data-theme="light"] .floating-chip {
   margin-top: 14px;
   padding: 16px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -345,10 +345,10 @@ html[data-theme="light"] .floating-chip {
   display: block;
   margin-bottom: 12px;
   color: var(--danger);
-  font-size: clamp(4.4rem, 9vw, 7rem);
+  font-size: 6rem;
   font-weight: 950;
   line-height: 0.88;
-  letter-spacing: -0.09em;
+  letter-spacing: 0;
 }
 
 .card-grid {
@@ -426,7 +426,7 @@ html[data-theme="light"] .floating-chip {
   position: absolute;
   inset: 12%;
   border: 1px dashed rgba(84, 242, 167, 0.26);
-  border-radius: 42px;
+  border-radius: var(--radius-xl);
 }
 
 .system-node,
@@ -470,7 +470,7 @@ html[data-theme="light"] .floating-chip {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   font-size: 2rem;
   font-weight: 950;
-  letter-spacing: -0.1em;
+  letter-spacing: 0;
 }
 
 .node-training {
@@ -507,7 +507,7 @@ html[data-theme="light"] .floating-chip {
   min-height: 230px;
   margin-bottom: 24px;
   border: 1px solid var(--line);
-  border-radius: 30px;
+  border-radius: var(--radius-xl);
   background:
     radial-gradient(circle at center, rgba(84, 242, 167, 0.22), transparent 58%),
     rgba(255, 255, 255, 0.05);
@@ -516,10 +516,10 @@ html[data-theme="light"] .floating-chip {
 
 .simulator-score span {
   color: var(--primary);
-  font-size: clamp(4rem, 9vw, 6.5rem);
+  font-size: 5.8rem;
   font-weight: 950;
   line-height: 0.9;
-  letter-spacing: -0.08em;
+  letter-spacing: 0;
 }
 
 .simulator-score p {
@@ -552,7 +552,7 @@ html[data-theme="light"] .floating-chip {
   margin-top: 22px;
   padding: 18px;
   border: 1px solid rgba(84, 242, 167, 0.28);
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   color: var(--muted-strong);
   background: rgba(84, 242, 167, 0.09);
   line-height: 1.55;
@@ -633,7 +633,7 @@ html[data-theme="light"] .floating-chip {
 .feature-list div {
   padding: 16px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -655,7 +655,7 @@ html[data-theme="light"] .floating-chip {
 .module-demo {
   min-height: 520px;
   padding: 24px;
-  border-radius: 26px;
+  border-radius: var(--radius-xl);
   background:
     radial-gradient(circle at 80% 0%, rgba(84, 242, 167, 0.16), transparent 35%),
     rgba(255, 255, 255, 0.06);
@@ -672,7 +672,7 @@ html[data-theme="light"] .floating-chip {
   margin: 8px 0;
   color: var(--primary);
   font-size: 1.55rem;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .macro-bars {
@@ -712,7 +712,7 @@ html[data-theme="light"] .floating-chip {
   margin: 34px 0;
   padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 22px;
+  border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -739,7 +739,7 @@ html[data-theme="light"] .floating-chip {
 .mental-stats div {
   padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -748,17 +748,17 @@ html[data-theme="light"] .floating-chip {
   margin-bottom: 5px;
   color: var(--primary);
   font-size: 2rem;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
 }
 
 .metric-card span {
   display: block;
   margin-bottom: 16px;
   color: var(--primary);
-  font-size: clamp(2.3rem, 4vw, 4rem);
+  font-size: 3.35rem;
   font-weight: 950;
   line-height: 0.9;
-  letter-spacing: -0.08em;
+  letter-spacing: 0;
 }
 
 .comparison-card {
@@ -781,12 +781,12 @@ html[data-theme="light"] .floating-chip {
 }
 
 .vitora-row td:first-child {
-  border-radius: 14px 0 0 14px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
   color: var(--primary);
 }
 
 .vitora-row td:last-child {
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .pricing-grid {
@@ -840,9 +840,9 @@ html[data-theme="light"] .floating-chip {
 .pricing-top strong {
   display: block;
   margin: 10px 0 6px;
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: 4.2rem;
   line-height: 0.9;
-  letter-spacing: -0.08em;
+  letter-spacing: 0;
 }
 
 .pricing-card ul {
@@ -861,7 +861,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .pricing-card li::before {
-  content: "✓";
+  content: "\2713";
   position: absolute;
   left: 0;
   color: var(--primary);
@@ -886,7 +886,7 @@ html[data-theme="light"] .floating-chip {
 .revenue-output {
   padding: 22px;
   border: 1px solid rgba(84, 242, 167, 0.28);
-  border-radius: 24px;
+  border-radius: var(--radius-xl);
   background: rgba(84, 242, 167, 0.09);
 }
 
@@ -898,9 +898,9 @@ html[data-theme="light"] .floating-chip {
 
 .revenue-output strong {
   color: var(--primary);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: 3.75rem;
   line-height: 0.95;
-  letter-spacing: -0.08em;
+  letter-spacing: 0;
 }
 
 .roadmap {
@@ -955,7 +955,7 @@ html[data-theme="light"] .floating-chip {
 .finale-card {
   margin: auto;
   padding: clamp(34px, 7vw, 84px);
-  border-radius: 44px;
+  border-radius: var(--radius-xl);
   text-align: center;
   background:
     radial-gradient(circle at 50% 0%, rgba(84, 242, 167, 0.24), transparent 42%),
@@ -1073,7 +1073,21 @@ html[data-theme="light"] .floating-chip {
   .calculator-card,
   .roadmap-detail {
     padding: 22px;
-    border-radius: 26px;
+    border-radius: var(--radius-xl);
+  }
+
+  .mega-number {
+    font-size: 4.25rem;
+  }
+
+  .simulator-score span {
+    font-size: 4rem;
+  }
+
+  .metric-card span,
+  .pricing-top strong,
+  .revenue-output strong {
+    font-size: 2.9rem;
   }
 
   .roadmap-card {

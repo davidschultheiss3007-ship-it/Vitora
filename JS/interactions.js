@@ -22,8 +22,30 @@ const VitoraInteractions = (() => {
     }
   ];
 
+  function readStoredTheme() {
+    try {
+      return localStorage.getItem("vitora-theme");
+    } catch {
+      return null;
+    }
+  }
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem("vitora-theme", theme);
+    } catch {
+      // The toggle still works even when storage is unavailable.
+    }
+  }
+
   function initRevealAnimations() {
     const revealElements = Array.from(document.querySelectorAll(".reveal"));
+    if (!revealElements.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((element) => element.classList.add("visible"));
+      return;
+    }
 
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -45,16 +67,22 @@ const VitoraInteractions = (() => {
 
   function initThemeToggle() {
     const themeToggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("vitora-theme");
+    const savedTheme = readStoredTheme();
 
     if (savedTheme === "light" || savedTheme === "dark") {
       document.documentElement.dataset.theme = savedTheme;
+    } else if (!document.documentElement.dataset.theme) {
+      document.documentElement.dataset.theme = "dark";
     }
 
     function updateIcon() {
       const currentTheme = document.documentElement.dataset.theme;
       if (themeToggle) {
-        themeToggle.textContent = currentTheme === "dark" ? "☾" : "☀";
+        themeToggle.textContent = currentTheme === "dark" ? "\u263E" : "\u2600";
+        themeToggle.setAttribute(
+          "aria-label",
+          currentTheme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+        );
       }
     }
 
@@ -67,7 +95,7 @@ const VitoraInteractions = (() => {
       const nextTheme = currentTheme === "dark" ? "light" : "dark";
 
       document.documentElement.dataset.theme = nextTheme;
-      localStorage.setItem("vitora-theme", nextTheme);
+      storeTheme(nextTheme);
       updateIcon();
     });
   }
@@ -77,41 +105,54 @@ const VitoraInteractions = (() => {
 
     if (!fullscreenToggle) return;
 
+    function updateFullscreenText() {
+      fullscreenToggle.textContent = document.fullscreenElement ? "Exit" : "Present";
+    }
+
     fullscreenToggle.addEventListener("click", async () => {
       try {
-        if (!document.fullscreenElement) {
+        if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
           await document.documentElement.requestFullscreen();
-          fullscreenToggle.textContent = "Exit";
-        } else {
+        } else if (document.fullscreenElement && document.exitFullscreen) {
           await document.exitFullscreen();
-          fullscreenToggle.textContent = "Present";
         }
       } catch {
-        fullscreenToggle.textContent = "Present";
+        updateFullscreenText();
       }
     });
 
-    document.addEventListener("fullscreenchange", () => {
-      fullscreenToggle.textContent = document.fullscreenElement ? "Exit" : "Present";
-    });
+    document.addEventListener("fullscreenchange", updateFullscreenText);
+    updateFullscreenText();
   }
 
   function initTabs() {
     const tabButtons = Array.from(document.querySelectorAll(".tab-button"));
     const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
+    if (!tabButtons.length || !tabPanels.length) return;
 
     tabButtons.forEach((button) => {
+      button.setAttribute("aria-selected", button.classList.contains("active") ? "true" : "false");
+
       button.addEventListener("click", () => {
         const target = button.dataset.tab;
+        if (!target) return;
 
         tabButtons.forEach((tabButton) => {
-          tabButton.classList.toggle("active", tabButton === button);
+          const isActive = tabButton === button;
+          tabButton.classList.toggle("active", isActive);
+          tabButton.setAttribute("aria-selected", isActive ? "true" : "false");
         });
 
         tabPanels.forEach((panel) => {
-          panel.classList.toggle("active", panel.id === target);
+          const isActive = panel.id === target;
+          panel.classList.toggle("active", isActive);
+          panel.hidden = !isActive;
         });
       });
+    });
+
+    tabPanels.forEach((panel) => {
+      panel.hidden = !panel.classList.contains("active");
     });
   }
 
@@ -120,43 +161,74 @@ const VitoraInteractions = (() => {
     const stageElement = document.getElementById("roadmapStage");
     const titleElement = document.getElementById("roadmapTitle");
     const textElement = document.getElementById("roadmapText");
+    if (!roadmapCards.length) return;
 
     function activateRoadmapCard(index) {
       const data = roadmapData[index];
-      if (!data || !stageElement || !titleElement || !textElement) return;
+      if (!data) return;
 
       roadmapCards.forEach((card, cardIndex) => {
         card.classList.toggle("active", cardIndex === index);
+        card.setAttribute("aria-pressed", cardIndex === index ? "true" : "false");
       });
 
-      stageElement.textContent = data.stage;
-      titleElement.textContent = data.title;
-      textElement.textContent = data.text;
+      if (stageElement) stageElement.textContent = data.stage;
+      if (titleElement) titleElement.textContent = data.title;
+      if (textElement) textElement.textContent = data.text;
     }
 
     roadmapCards.forEach((card) => {
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-pressed", card.classList.contains("active") ? "true" : "false");
+
       card.addEventListener("click", () => {
-        activateRoadmapCard(Number(card.dataset.roadmap));
+        const index = Number(card.dataset.roadmap);
+        activateRoadmapCard(Number.isFinite(index) ? index : 0);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+
+        event.preventDefault();
+        const index = Number(card.dataset.roadmap);
+        activateRoadmapCard(Number.isFinite(index) ? index : 0);
       });
     });
   }
 
   function getScoreRecommendation(score, training, nutrition, mood) {
-    const lowest = Math.min(training, nutrition, mood);
+    const areas = [
+      {
+        value: training,
+        strong: "Training is the lowest signal, but still solid. Keep progression controlled and protect recovery.",
+        medium: "Training consistency is the weakest signal. Start with a shorter workout and rebuild momentum.",
+        low: "Training needs structure first. Choose one achievable session today before adding intensity."
+      },
+      {
+        value: nutrition,
+        strong: "Nutrition is the lowest signal, but the day is still aligned. Add one protein-rich meal to lock it in.",
+        medium: "Nutrition is limiting progress. Increase protein and plan one simple high-quality meal today.",
+        low: "Nutrition needs attention first. Build the next meal around protein, fiber and hydration."
+      },
+      {
+        value: mood,
+        strong: "Mental wellbeing is the lowest signal, but still stable. Keep tomorrow's intensity moderate.",
+        medium: "Mental wellbeing needs attention. Reduce intensity slightly and prioritize recovery before pushing harder.",
+        low: "Recovery should lead today. Use a lighter session, sleep routine and a short mood check-in."
+      }
+    ];
+    const weakest = areas.reduce((lowest, area) => (area.value < lowest.value ? area : lowest), areas[0]);
 
     if (score >= 85) {
-      return "Strong alignment. Keep the current rhythm and use tomorrow for controlled progression.";
+      return weakest.strong;
     }
 
-    if (lowest === training) {
-      return "Training consistency is the weakest signal. Start with a shorter workout and rebuild momentum.";
+    if (score >= 65) {
+      return weakest.medium;
     }
 
-    if (lowest === nutrition) {
-      return "Nutrition is limiting progress. Increase protein and plan one simple high-quality meal today.";
-    }
-
-    return "Mental wellbeing needs attention. Reduce intensity slightly and prioritize recovery before pushing harder.";
+    return weakest.low;
   }
 
   function initScoreSimulator() {
@@ -172,34 +244,41 @@ const VitoraInteractions = (() => {
     const scoreLabel = document.getElementById("scoreLabel");
     const heroScore = document.getElementById("heroScore");
     const recommendation = document.getElementById("scoreRecommendation");
+    const scoreRing = document.querySelector(".score-ring");
 
     if (!trainingSlider || !nutritionSlider || !moodSlider) return;
 
     function updateScore() {
-      const training = Number(trainingSlider.value);
-      const nutrition = Number(nutritionSlider.value);
-      const mood = Number(moodSlider.value);
+      const training = Number(trainingSlider.value || 0);
+      const nutrition = Number(nutritionSlider.value || 0);
+      const mood = Number(moodSlider.value || 0);
       const score = Math.round(training * 0.36 + nutrition * 0.34 + mood * 0.3);
 
-      trainingValue.textContent = String(training);
-      nutritionValue.textContent = String(nutrition);
-      moodValue.textContent = String(mood);
+      if (trainingValue) trainingValue.textContent = String(training);
+      if (nutritionValue) nutritionValue.textContent = String(nutrition);
+      if (moodValue) moodValue.textContent = String(mood);
 
-      scoreValue.textContent = `${score}%`;
+      if (scoreValue) scoreValue.textContent = `${score}%`;
 
       if (heroScore) {
         heroScore.textContent = `${score}%`;
       }
 
-      if (score >= 85) {
+      if (scoreRing) {
+        scoreRing.style.setProperty("--score-percent", `${score}%`);
+      }
+
+      if (scoreLabel && score >= 85) {
         scoreLabel.textContent = "Strong daily alignment";
-      } else if (score >= 65) {
+      } else if (scoreLabel && score >= 65) {
         scoreLabel.textContent = "Good, but improvable";
-      } else {
+      } else if (scoreLabel) {
         scoreLabel.textContent = "Needs recovery and structure";
       }
 
-      recommendation.textContent = getScoreRecommendation(score, training, nutrition, mood);
+      if (recommendation) {
+        recommendation.textContent = getScoreRecommendation(score, training, nutrition, mood);
+      }
     }
 
     [trainingSlider, nutritionSlider, moodSlider].forEach((slider) => {
@@ -221,14 +300,14 @@ const VitoraInteractions = (() => {
 
     function formatRevenue(value) {
       if (value >= 1000000) {
-        return `€${(value / 1000000).toFixed(1)}M`;
+        return `\u20ac${(value / 1000000).toFixed(1)}M`;
       }
 
-      return `€${Math.round(value / 1000)}K`;
+      return `\u20ac${Math.round(value / 1000)}K`;
     }
 
     function updateRevenue() {
-      const conversion = Number(conversionSlider.value);
+      const conversion = Number(conversionSlider.value || 0);
       const premiumUsers = projectedUsers * (conversion / 100);
       const annualRevenue = premiumUsers * monthlyPrice * 12;
 
@@ -241,13 +320,21 @@ const VitoraInteractions = (() => {
   }
 
   function initTiltCards() {
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) return;
+
     const cards = Array.from(
       document.querySelectorAll(".glass-card, .metric-card, .pricing-card, .roadmap-card")
     );
+    if (!cards.length) return;
 
     cards.forEach((card) => {
       card.addEventListener("mousemove", (event) => {
         const rect = card.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
 

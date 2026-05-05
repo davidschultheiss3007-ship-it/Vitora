@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  VitoraNavigation.init();
-  VitoraInteractions.init();
+  if (typeof VitoraNavigation !== "undefined" && VitoraNavigation.init) {
+    VitoraNavigation.init();
+  }
+
+  if (typeof VitoraInteractions !== "undefined" && VitoraInteractions.init) {
+    VitoraInteractions.init();
+  }
 });
  

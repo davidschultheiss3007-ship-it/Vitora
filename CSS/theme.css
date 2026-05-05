@@ -20,14 +20,16 @@
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
   --shadow-bright: 0 24px 70px rgba(84, 242, 167, 0.18);
 
-  --radius-xl: 36px;
-  --radius-lg: 26px;
-  --radius-md: 18px;
-  --radius-sm: 12px;
+  --radius-xl: 8px;
+  --radius-lg: 8px;
+  --radius-md: 8px;
+  --radius-sm: 8px;
 
   --max-width: 1180px;
   --header-height: 76px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --panel-blur: 22px;
+  --ring: rgba(84, 242, 167, 0.36);
 }
 
 html[data-theme="light"] {
@@ -51,4 +53,5 @@ html[data-theme="light"] {
 
   --shadow: 0 30px 80px rgba(17, 74, 48, 0.14);
   --shadow-bright: 0 24px 70px rgba(9, 185, 109, 0.13);
+  --ring: rgba(9, 185, 109, 0.26);
 }
