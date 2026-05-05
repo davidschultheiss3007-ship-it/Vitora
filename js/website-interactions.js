@@ -22,6 +22,42 @@ const VitoraInteractions = (() => {
     }
   ];
 
+  const appPreviewModes = {
+    move: {
+      score: 87,
+      label: "Training ready",
+      stack: [
+        ["Workout", "Push Day"],
+        ["Next set", "Bench 4 x 8"],
+        ["Recovery", "Ready"]
+      ],
+      coach:
+        "Start with bench press, keep two reps in reserve and finish with a short mobility cooldown."
+    },
+    fuel: {
+      score: 74,
+      label: "Protein gap",
+      stack: [
+        ["Calories", "1,860 / 2,300"],
+        ["Protein", "+24g needed"],
+        ["Hydration", "1.8L logged"]
+      ],
+      coach:
+        "Add a high-protein dinner with fiber and water before increasing tomorrow's training load."
+    },
+    mind: {
+      score: 91,
+      label: "Recovery strong",
+      stack: [
+        ["Sleep", "7h 40m"],
+        ["Mood", "Calm"],
+        ["Breathwork", "6 min streak"]
+      ],
+      coach:
+        "Keep the evening light, repeat the breathing session and protect your current sleep rhythm."
+    }
+  };
+
   function readStoredTheme() {
     try {
       return localStorage.getItem("vitora-theme");
@@ -126,33 +162,92 @@ const VitoraInteractions = (() => {
   }
 
   function initTabs() {
-    const tabButtons = Array.from(document.querySelectorAll(".tab-button"));
-    const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
-    if (!tabButtons.length || !tabPanels.length) return;
+    const tabGroups = Array.from(document.querySelectorAll(".tabs"));
+    if (!tabGroups.length) return;
 
-    tabButtons.forEach((button) => {
-      button.setAttribute("aria-selected", button.classList.contains("active") ? "true" : "false");
+    tabGroups.forEach((group) => {
+      const tabButtons = Array.from(group.querySelectorAll(".tab-button[data-tab]"));
+      const tabPanels = Array.from(group.querySelectorAll(".tab-panel"));
+      if (!tabButtons.length || !tabPanels.length) return;
 
-      button.addEventListener("click", () => {
-        const target = button.dataset.tab;
-        if (!target) return;
+      tabButtons.forEach((button) => {
+        button.setAttribute("aria-selected", button.classList.contains("active") ? "true" : "false");
 
-        tabButtons.forEach((tabButton) => {
-          const isActive = tabButton === button;
-          tabButton.classList.toggle("active", isActive);
-          tabButton.setAttribute("aria-selected", isActive ? "true" : "false");
-        });
+        button.addEventListener("click", () => {
+          const target = button.dataset.tab;
+          if (!target) return;
 
-        tabPanels.forEach((panel) => {
-          const isActive = panel.id === target;
-          panel.classList.toggle("active", isActive);
-          panel.hidden = !isActive;
+          tabButtons.forEach((tabButton) => {
+            const isActive = tabButton === button;
+            tabButton.classList.toggle("active", isActive);
+            tabButton.setAttribute("aria-selected", isActive ? "true" : "false");
+          });
+
+          tabPanels.forEach((panel) => {
+            const isActive = panel.id === target;
+            panel.classList.toggle("active", isActive);
+            panel.hidden = !isActive;
+          });
         });
       });
-    });
 
-    tabPanels.forEach((panel) => {
-      panel.hidden = !panel.classList.contains("active");
+      tabPanels.forEach((panel) => {
+        panel.hidden = !panel.classList.contains("active");
+      });
+    });
+  }
+
+  function renderAppPreviewStack(stackElement, items) {
+    stackElement.replaceChildren(
+      ...items.map(([label, value]) => {
+        const row = document.createElement("div");
+        const labelElement = document.createElement("span");
+        const valueElement = document.createElement("strong");
+
+        labelElement.textContent = label;
+        valueElement.textContent = value;
+        row.append(labelElement, valueElement);
+
+        return row;
+      })
+    );
+  }
+
+  function initAppPreview() {
+    const previews = Array.from(document.querySelectorAll("[data-app-preview]"));
+    if (!previews.length) return;
+
+    previews.forEach((preview) => {
+      const modeControls = Array.from(preview.querySelectorAll("[data-app-mode]"));
+      const scoreElement = preview.querySelector("[data-app-preview-score]");
+      const labelElement = preview.querySelector("[data-app-preview-label]");
+      const stackElement = preview.querySelector("[data-app-preview-stack]");
+      const coachElement = preview.querySelector("[data-app-preview-coach]");
+      const ringElement = preview.querySelector("[data-app-preview-ring]");
+
+      function activateMode(mode) {
+        const data = appPreviewModes[mode] || appPreviewModes.move;
+
+        modeControls.forEach((control) => {
+          const isActive = control.dataset.appMode === mode;
+          control.classList.toggle("active", isActive);
+          control.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        if (scoreElement) scoreElement.textContent = `${data.score}%`;
+        if (labelElement) labelElement.textContent = data.label;
+        if (ringElement) ringElement.style.setProperty("--score-percent", `${data.score}%`);
+        if (stackElement) renderAppPreviewStack(stackElement, data.stack);
+        if (coachElement) coachElement.textContent = data.coach;
+      }
+
+      modeControls.forEach((control) => {
+        control.addEventListener("click", () => {
+          activateMode(control.dataset.appMode || "move");
+        });
+      });
+
+      activateMode("move");
     });
   }
 
@@ -357,6 +452,7 @@ const VitoraInteractions = (() => {
     initThemeToggle();
     initFullscreenToggle();
     initTabs();
+    initAppPreview();
     initRoadmap();
     initScoreSimulator();
     initRevenueCalculator();

@@ -90,11 +90,23 @@
   background: rgba(5, 8, 7, 0.72);
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
+  color: var(--text);
+  text-align: left;
   animation: floatCard 4s var(--ease) infinite alternate;
+  transition:
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease),
+    transform 0.2s var(--ease);
 }
 
 html[data-theme="light"] .floating-chip {
   background: rgba(255, 255, 255, 0.8);
+}
+
+.floating-chip:hover,
+.floating-chip.active {
+  border-color: rgba(84, 242, 167, 0.55);
+  background: rgba(84, 242, 167, 0.14);
 }
 
 .floating-chip span {
@@ -171,6 +183,62 @@ html[data-theme="light"] .floating-chip {
     radial-gradient(circle at 50% 5%, rgba(84, 242, 167, 0.24), transparent 30%),
     linear-gradient(180deg, #10241b, #07100d 62%);
   overflow: hidden;
+}
+
+.app-preview {
+  min-height: 660px;
+}
+
+.app-preview .orbit-ring {
+  inset: 22px;
+}
+
+.app-preview .phone-frame {
+  width: min(342px, 88vw);
+}
+
+.app-preview .app-screen {
+  min-height: 0;
+  padding: 54px 16px 16px;
+}
+
+.app-preview .score-ring {
+  width: 182px;
+  height: 182px;
+  margin: 24px auto;
+}
+
+.app-preview .score-ring div {
+  width: 126px;
+  height: 126px;
+}
+
+.app-preview .score-ring strong {
+  font-size: 2rem;
+}
+
+.app-mode-tabs {
+  margin-bottom: 12px;
+}
+
+.app-preview .tab-button {
+  min-height: 42px;
+}
+
+.app-preview .mini-stack {
+  gap: 8px;
+}
+
+.app-preview .mini-stack div {
+  padding: 11px 12px;
+}
+
+.app-preview .ai-card {
+  padding: 14px;
+}
+
+.app-preview .ai-card p {
+  font-size: 0.86rem;
 }
 
 .app-header,

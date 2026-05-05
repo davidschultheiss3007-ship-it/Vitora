@@ -69,10 +69,57 @@ const VitoraPresentation = (() => {
           <p class="lead">${escapeHtml(slide.subtitle)}</p>
           <div class="presenter-line">${escapeHtml(slide.speaker)}</div>
         </div>
-        <div class="brand-stage reveal delay-1">
-          <span class="stage-mark">V</span>
-          <strong>${escapeHtml(slide.title)}</strong>
-          <small>${escapeHtml(slide.tagline)}</small>
+        <div class="hero-visual app-preview reveal delay-1" data-app-preview>
+          <div class="orbit-ring" aria-hidden="true"></div>
+          <button class="floating-chip chip-one active" type="button" data-app-mode="move" aria-pressed="true">
+            <span>Move</span>
+            <strong>Push Day</strong>
+          </button>
+          <button class="floating-chip chip-two" type="button" data-app-mode="fuel" aria-pressed="false">
+            <span>Fuel</span>
+            <strong>Protein +24g</strong>
+          </button>
+          <button class="floating-chip chip-three" type="button" data-app-mode="mind" aria-pressed="false">
+            <span>Mind</span>
+            <strong>Sleep 7h 40m</strong>
+          </button>
+
+          <div class="phone-frame" aria-label="Interactive Vitora app preview">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="app-screen" style="--score-percent: 87%;">
+              <div class="app-header">
+                <div>
+                  <small>Vitora today</small>
+                  <strong>Daily Coach</strong>
+                </div>
+                <span class="pulse-dot" aria-hidden="true"></span>
+              </div>
+
+              <div class="score-ring" data-app-preview-ring style="--score-percent: 87%;">
+                <div>
+                  <strong data-app-preview-score>87%</strong>
+                  <span data-app-preview-label>Training ready</span>
+                </div>
+              </div>
+
+              <div class="tab-buttons app-mode-tabs" role="group" aria-label="App preview modes">
+                <button class="tab-button active" type="button" data-app-mode="move" aria-pressed="true">Move</button>
+                <button class="tab-button" type="button" data-app-mode="fuel" aria-pressed="false">Fuel</button>
+                <button class="tab-button" type="button" data-app-mode="mind" aria-pressed="false">Mind</button>
+              </div>
+
+              <div class="mini-stack" data-app-preview-stack>
+                <div><span>Workout</span><strong>Push Day</strong></div>
+                <div><span>Next set</span><strong>Bench 4 x 8</strong></div>
+                <div><span>Recovery</span><strong>Ready</strong></div>
+              </div>
+
+              <div class="ai-card">
+                <span>AI Coach</span>
+                <p data-app-preview-coach>Start with bench press, keep two reps in reserve and finish with a short mobility cooldown.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `;
