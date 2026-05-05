@@ -326,7 +326,9 @@ const VitoraInteractions = (() => {
     if (prefersReducedMotion) return;
 
     const cards = Array.from(
-      document.querySelectorAll(".glass-card, .metric-card, .pricing-card, .roadmap-card")
+      document.querySelectorAll(
+        ".glass-card, .metric-card, .pricing-card, .roadmap-card, .presentation-card, .strategy-card"
+      )
     );
     if (!cards.length) return;
 

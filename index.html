@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- 
-  <title>Vitora — Business English Pitch</title>
+
+  <title>Vitora - Business English Presentation</title>
   <meta
     name="description"
-    content="Vitora connects training, nutrition and mental wellbeing in one intelligent AI-powered health system."
+    content="Vitora corporate communication presentation rebuilt as an interactive web deck."
   />
 
   <link rel="stylesheet" href="css/base.css" />
@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/sections.css" />
 
+  <script src="data/slides.js" defer></script>
+  <script src="js/presentation.js" defer></script>
   <script src="js/navigation.js" defer></script>
   <script src="js/interactions.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -25,13 +27,15 @@
   <div class="background-grid"></div>
 
   <header class="site-header" id="siteHeader">
-    <a class="brand" href="#home" aria-label="Vitora home">
+    <a class="brand" href="#slide-01" aria-label="Vitora home">
       <span class="brand-mark">V</span>
       <span class="brand-copy">
         <strong>VITORA</strong>
-        <small>Business Pitch</small>
+        <small>Business English</small>
       </span>
     </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Presentation navigation"></nav>
 
     <nav class="main-nav" aria-label="Main navigation">
       <a href="#problem">Problem</a>
@@ -44,556 +48,29 @@
     </nav>
  
     <div class="header-actions">
-      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme">☾</button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme">&#9790;</button>
       <button class="nav-cta" id="fullscreenToggle" type="button">Present</button>
     </div>
   </header>
 
-  <main>
-    <!-- SECTION: Home -->
-    <section class="section hero-section active-section" id="home" data-section>
-      <div class="section-inner hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Health · Fitness · Mind</p>
-          <h1>One intelligent system for physical and mental progress.</h1>
-          <p class="lead">
-            Vitora connects training, nutrition and mental wellbeing in one AI-powered app —
-            helping users train smarter, eat with purpose and stay motivated long-term.
-          </p>
-
-          <div class="hero-actions">
-            <a class="primary-button" href="#solution">Explore the system</a>
-            <a class="secondary-button" href="#simulator">Try the demo</a>
-          </div>
-
-          <div class="stat-strip">
-            <div><strong>3</strong><span>connected modules</span></div>
-            <div><strong>AI</strong><span>personalized coaching</span></div>
-            <div><strong>2025</strong><span>planned launch</span></div>
-          </div>
+  <main class="slide-deck" id="slideDeck" aria-label="Vitora presentation">
+    <noscript>
+      <section class="section">
+        <div class="section-inner">
+          <h1>Vitora</h1>
+          <p>This interactive presentation requires JavaScript.</p>
         </div>
-
-        <div class="hero-visual reveal delay-1">
-          <div class="orbit-ring"></div>
-
-          <div class="floating-chip chip-one">
-            <span>Training</span>
-            <strong>62.5 kg</strong>
-          </div>
-
-          <div class="floating-chip chip-two">
-            <span>Protein</span>
-            <strong>142 g</strong>
-          </div>
-
-          <div class="floating-chip chip-three">
-            <span>Mood</span>
-            <strong>8.2 / 10</strong>
-          </div>
-
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-
-            <div class="app-screen">
-              <div class="app-header">
-                <div>
-                  <small>Today</small>
-                  <strong>Vitora Flow</strong>
-                </div>
-                <span class="pulse-dot"></span>
-              </div>
-
-              <div class="score-ring">
-                <div>
-                  <strong id="heroScore">87%</strong>
-                  <span>Daily alignment</span>
-                </div>
-              </div>
-
-              <div class="mini-stack">
-                <div><span>Training plan</span><strong>Push Day</strong></div>
-                <div><span>Calories</span><strong>1,840 / 2,800</strong></div>
-                <div><span>Wellbeing</span><strong>Positive effect</strong></div>
-              </div>
-
-              <div class="ai-card">
-                <span>AI insight</span>
-                <p>Increase protein today and keep tomorrow’s intensity moderate.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="next-section" href="#problem">Scroll to pitch <span>↓</span></a>
-    </section>
-
-    <!-- SECTION: Problem -->
-    <section class="section problem-section" id="problem" data-section>
-      <div class="section-inner split-layout">
-        <div class="section-heading left reveal">
-          <p class="eyebrow">The problem</p>
-          <h2>People do not fail because of willpower. They fail because of the system.</h2>
-          <p>
-            Most users start with motivation, but their tools are fragmented.
-            Training, nutrition and mental wellbeing usually happen in separate apps that do not learn from each other.
-          </p>
-        </div>
-
-        <div class="impact-panel reveal delay-1">
-          <span class="mega-number">80%</span>
-          <h3>of fitness goals fail within the first three months.</h3>
-          <p>
-            Users receive isolated data instead of connected guidance. Vitora turns that chaos into one clear feedback loop.
-          </p>
-        </div>
-      </div>
-
-      <div class="section-inner card-grid three">
-        <article class="glass-card reveal">
-          <span class="card-number">01</span>
-          <h3>No clear plan</h3>
-          <p>Training plans are often copied from the internet without personal context, equipment or progression logic.</p>
-        </article>
-
-        <article class="glass-card reveal delay-1">
-          <span class="card-number">02</span>
-          <h3>No connection</h3>
-          <p>Fitness, nutrition and mental-health apps work as separate tools instead of one shared system.</p>
-        </article>
-
-        <article class="glass-card reveal delay-2">
-          <span class="card-number">03</span>
-          <h3>No feedback loop</h3>
-          <p>Users do not know what to adjust when progress, nutrition or motivation starts to decline.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- SECTION: Solution -->
-    <section class="section solution-section" id="solution" data-section>
-      <div class="section-heading reveal">
-        <p class="eyebrow">The solution</p>
-        <h2>One app. Three modules. One intelligent feedback loop.</h2>
-        <p>
-          Vitora connects training, nutrition and mental wellbeing into a holistic AI-powered system.
-          Each module improves the others instead of standing alone.
-        </p>
-      </div>
-
-      <div class="section-inner system-map reveal delay-1">
-        <article class="system-node node-training">
-          <span>01</span>
-          <h3>Training</h3>
-          <p>Plans, workout logging, progress graphs and smart load suggestions.</p>
-        </article>
-
-        <article class="system-core">
-          <span>V</span>
-          <h3>AI Coach</h3>
-          <p>Turns user data into next steps across all modules.</p>
-        </article>
-
-        <article class="system-node node-nutrition">
-          <span>02</span>
-          <h3>Nutrition</h3>
-          <p>Food tracking, macros, calories and goal-based recommendations.</p>
-        </article>
-
-        <article class="system-node node-mental">
-          <span>03</span>
-          <h3>Mental</h3>
-          <p>Mood check-ins, wellbeing trends and recovery insights.</p>
-        </article>
-      </div>
-
-      <div class="section-inner flow-strip reveal">
-        <div><strong>Input</strong><span>goals, workouts, meals, mood</span></div>
-        <div><strong>Analysis</strong><span>AI detects patterns and gaps</span></div>
-        <div><strong>Action</strong><span>plans, tips and adjustments</span></div>
-      </div>
-    </section>
-
-    <!-- SECTION: Interactive Score -->
-    <section class="section simulator-section" id="simulator" data-section>
-      <div class="section-inner split-layout">
-        <div class="section-heading left reveal">
-          <p class="eyebrow">Interactive demo</p>
-          <h2>Try the Vitora alignment score.</h2>
-          <p>
-            This live demo shows the core idea: training, nutrition and mood should not be measured separately.
-            They should create one practical signal for the user.
-          </p>
-        </div>
-
-        <div class="simulator-card reveal delay-1">
-          <div class="simulator-score">
-            <span id="scoreValue">87%</span>
-            <p id="scoreLabel">Strong daily alignment</p>
-          </div>
-
-          <div class="slider-group">
-            <label for="trainingSlider">
-              <span>Training consistency</span>
-              <strong id="trainingValue">85</strong>
-            </label>
-            <input id="trainingSlider" type="range" min="0" max="100" value="85" />
-          </div>
-
-          <div class="slider-group">
-            <label for="nutritionSlider">
-              <span>Nutrition quality</span>
-              <strong id="nutritionValue">88</strong>
-            </label>
-            <input id="nutritionSlider" type="range" min="0" max="100" value="88" />
-          </div>
-
-          <div class="slider-group">
-            <label for="moodSlider">
-              <span>Mental wellbeing</span>
-              <strong id="moodValue">89</strong>
-            </label>
-            <input id="moodSlider" type="range" min="0" max="100" value="89" />
-          </div>
-
-          <div class="ai-recommendation" id="scoreRecommendation">
-            Increase protein today and keep tomorrow’s training intensity moderate.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Product -->
-    <section class="section product-section" id="product" data-section>
-      <div class="section-heading reveal">
-        <p class="eyebrow">Product modules</p>
-        <h2>Built as a connected experience, not a feature list.</h2>
-        <p>
-          Explore how the three modules work together to create a clearer, more motivating user journey.
-        </p>
-      </div>
-
-      <div class="section-inner tabs reveal delay-1">
-        <div class="tab-buttons" role="tablist" aria-label="Vitora modules">
-          <button class="tab-button active" type="button" data-tab="training">Training</button>
-          <button class="tab-button" type="button" data-tab="nutrition">Nutrition</button>
-          <button class="tab-button" type="button" data-tab="mental">Mental health</button>
-        </div>
-
-        <div class="tab-panel active" id="training">
-          <div class="module-layout">
-            <div class="module-copy">
-              <p class="eyebrow">Module 01</p>
-              <h3>Training plans that grow with the user.</h3>
-              <p>
-                Vitora creates goal-based plans for muscle gain, weight loss or weight maintenance.
-                Plans adapt to level, equipment and performance history.
-              </p>
-
-              <div class="feature-list">
-                <div><strong>Goal-based planning</strong><span>Adapted to objective, level and location.</span></div>
-                <div><strong>Set logging</strong><span>Weight and repetitions are recorded per set.</span></div>
-                <div><strong>Smart progression</strong><span>Successful workouts trigger load suggestions.</span></div>
-                <div><strong>Progress graphs</strong><span>Progress becomes visible and motivating.</span></div>
-              </div>
-            </div>
-
-            <div class="module-demo">
-              <div class="demo-header"><span>Training plan</span><strong>Push Day</strong></div>
-              <div class="workout-list">
-                <div><span>Bench press</span><strong>4 × 8–10 · 60 kg</strong></div>
-                <div><span>Shoulder press</span><strong>3 × 10–12 · 40 kg</strong></div>
-                <div><span>Lateral raise</span><strong>3 × 12–15 · 10 kg</strong></div>
-                <div><span>Triceps pushdown</span><strong>3 × 12–15 · 25 kg</strong></div>
-              </div>
-              <div class="suggestion-card">
-                <span>AI load suggestion</span>
-                <strong>Next: 62.5 kg</strong>
-                <p>All target sets completed successfully.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-panel" id="nutrition">
-          <div class="module-layout">
-            <div class="module-copy">
-              <p class="eyebrow">Module 02</p>
-              <h3>Nutrition tracking that supports the training goal.</h3>
-              <p>
-                Users track food, calories and macros while Vitora gives AI feedback based on their body goal and training plan.
-              </p>
-
-              <div class="feature-list">
-                <div><strong>Food search</strong><span>Nutrition values for selected amounts.</span></div>
-                <div><strong>Macro tracking</strong><span>Calories, protein, carbs and fat against targets.</span></div>
-                <div><strong>AI feedback</strong><span>Concrete recommendations aligned with user goals.</span></div>
-                <div><strong>Training connection</strong><span>Targets adjust to workout intensity.</span></div>
-              </div>
-            </div>
-
-            <div class="module-demo">
-              <div class="demo-header"><span>Daily overview</span><strong>1,840 / 2,800 kcal</strong></div>
-
-              <div class="macro-bars">
-                <div>
-                  <div class="macro-label"><span>Protein</span><strong>142g / 160g</strong></div>
-                  <div class="bar"><span style="--value: 89%"></span></div>
-                </div>
-                <div>
-                  <div class="macro-label"><span>Carbs</span><strong>198g / 250g</strong></div>
-                  <div class="bar"><span style="--value: 79%"></span></div>
-                </div>
-                <div>
-                  <div class="macro-label"><span>Fat</span><strong>55g / 70g</strong></div>
-                  <div class="bar"><span style="--value: 78%"></span></div>
-                </div>
-              </div>
-
-              <div class="suggestion-card">
-                <span>AI nutrition tip</span>
-                <strong>More protein</strong>
-                <p>18g remaining to reach today’s target.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-panel" id="mental">
-          <div class="module-layout">
-            <div class="module-copy">
-              <p class="eyebrow">Module 03</p>
-              <h3>The underestimated key to long-term progress.</h3>
-              <p>
-                Vitora connects mood check-ins, workout history and recovery insights to show how movement affects wellbeing.
-              </p>
-
-              <div class="feature-list">
-                <div><strong>Mood check-ins</strong><span>Users rate how they feel after training.</span></div>
-                <div><strong>Mood history</strong><span>Weekly patterns become visible.</span></div>
-                <div><strong>Training connection</strong><span>Sport and wellbeing are measured together.</span></div>
-                <div><strong>Recovery insights</strong><span>AI recommends intensity, recovery and self-care.</span></div>
-              </div>
-            </div>
-
-            <div class="module-demo">
-              <div class="demo-header"><span>Mood trend</span><strong>Last 10 days</strong></div>
-              <div class="mood-chart" aria-label="Mood trend from 1 to 10">
-                <span style="--height: 60%">6</span>
-                <span style="--height: 70%">7</span>
-                <span style="--height: 50%">5</span>
-                <span style="--height: 80%">8</span>
-                <span style="--height: 80%">8</span>
-                <span style="--height: 70%">7</span>
-                <span style="--height: 90%">9</span>
-                <span style="--height: 80%">8</span>
-                <span style="--height: 70%">7</span>
-                <span style="--height: 80%">8</span>
-              </div>
-
-              <div class="mental-stats">
-                <div><strong>8.2</strong><span>average mood</span></div>
-                <div><strong>78%</strong><span>positive effect</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Market -->
-    <section class="section market-section" id="market" data-section>
-      <div class="section-heading reveal">
-        <p class="eyebrow">Market opportunity</p>
-        <h2>A growing market without a truly holistic solution.</h2>
-        <p>
-          Existing apps usually solve only one part of the problem.
-          Vitora positions itself in the gap between fitness, nutrition and mental wellbeing.
-        </p>
-      </div>
-
-      <div class="section-inner card-grid four">
-        <article class="metric-card reveal"><span>$96B</span><p>global fitness-app market in 2025</p></article>
-        <article class="metric-card reveal delay-1"><span>$15B</span><p>mental-health-app market in 2025</p></article>
-        <article class="metric-card reveal delay-2"><span>850M</span><p>active fitness-app users worldwide</p></article>
-        <article class="metric-card reveal delay-3"><span>+23%</span><p>annual market growth rate</p></article>
-      </div>
-
-      <div class="section-inner comparison-card reveal">
-        <div class="comparison-header">
-          <p class="eyebrow">Competitive analysis</p>
-          <h3>Vitora can do what single-purpose competitors cannot.</h3>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Provider</th>
-                <th>Training</th>
-                <th>Nutrition</th>
-                <th>Mental</th>
-                <th>AI Coach</th>
-                <th>Connected</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>MyFitnessPal</td><td>—</td><td>Yes</td><td>—</td><td>—</td><td>—</td></tr>
-              <tr><td>Hevy</td><td>Yes</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-              <tr><td>Headspace</td><td>—</td><td>—</td><td>Yes</td><td>—</td><td>—</td></tr>
-              <tr><td>Nike Training</td><td>Yes</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-              <tr class="vitora-row"><td>VITORA</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Business -->
-    <section class="section business-section" id="business" data-section>
-      <div class="section-heading reveal">
-        <p class="eyebrow">Business model</p>
-        <h2>Freemium access. Premium intelligence.</h2>
-        <p>
-          The free version creates adoption. Premium unlocks deeper AI guidance,
-          frequent plan updates and stronger personalization.
-        </p>
-      </div>
-
-      <div class="section-inner pricing-grid">
-        <article class="pricing-card reveal">
-          <div class="pricing-top">
-            <span>Free</span>
-            <strong>€0</strong>
-            <p>Easy entry for new users.</p>
-          </div>
-
-          <ul>
-            <li>AI training plan creation</li>
-            <li>Set logging and training history</li>
-            <li>Nutrition tracking</li>
-            <li>Daily mental check-in</li>
-          </ul>
-        </article>
-
-        <article class="pricing-card premium reveal delay-1">
-          <div class="pricing-badge">Most valuable</div>
-          <div class="pricing-top">
-            <span>Premium</span>
-            <strong>€9.99</strong>
-            <p>per month</p>
-          </div>
-
-          <ul>
-            <li>Everything in Free</li>
-            <li>Unlimited plan updates</li>
-            <li>Weekly AI plan adjustment</li>
-            <li>Detailed nutrition coaching</li>
-            <li>Deep mood analysis and insights</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="section-inner calculator-card reveal">
-        <div>
-          <p class="eyebrow">Live revenue model</p>
-          <h3>Adjust the premium conversion rate.</h3>
-          <p>
-            A small change in conversion has a major effect on yearly recurring revenue.
-          </p>
-        </div>
-
-        <div class="calculator-controls">
-          <label for="conversionSlider">
-            <span>Premium conversion</span>
-            <strong id="conversionValue">10%</strong>
-          </label>
-          <input id="conversionSlider" type="range" min="1" max="25" value="10" />
-
-          <div class="revenue-output">
-            <span>Projected ARR</span>
-            <strong id="revenueValue">€599K</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Roadmap -->
-    <section class="section roadmap-section" id="roadmap" data-section>
-      <div class="section-heading reveal">
-        <p class="eyebrow">Roadmap</p>
-        <h2>From MVP to scalable health platform.</h2>
-        <p>
-          Vitora’s roadmap moves from product validation to monetization and finally to European scale.
-        </p>
-      </div>
-
-      <div class="section-inner roadmap" id="roadmapCards">
-        <article class="roadmap-card active reveal" data-roadmap="0">
-          <span>Q1 2025</span>
-          <h3>MVP launch</h3>
-          <p>iOS and Android app, all three modules and a beta community.</p>
-        </article>
-
-        <article class="roadmap-card reveal delay-1" data-roadmap="1">
-          <span>Q2–Q3 2025</span>
-          <h3>Growth</h3>
-          <p>App Store launch, social features and barcode scanner.</p>
-        </article>
-
-        <article class="roadmap-card reveal delay-2" data-roadmap="2">
-          <span>Q4 2025</span>
-          <h3>Monetization</h3>
-          <p>Premium features, subscriptions and wearable integrations.</p>
-        </article>
-
-        <article class="roadmap-card reveal delay-3" data-roadmap="3">
-          <span>2026+</span>
-          <h3>Scaling</h3>
-          <p>EU expansion, B2B gym partnerships and Series A preparation.</p>
-        </article>
-      </div>
-
-      <div class="section-inner roadmap-detail reveal">
-        <span id="roadmapStage">Current focus</span>
-        <h3 id="roadmapTitle">MVP launch</h3>
-        <p id="roadmapText">
-          The first product phase focuses on validating the core experience:
-          one app, three modules and an early user community.
-        </p>
-      </div>
-    </section>
-
-    <!-- SECTION: Finale -->
-    <section class="section finale-section" id="finale" data-section>
-      <div class="section-inner finale-card reveal">
-        <div class="brand-large">
-          <span>V</span>
-          <strong>VITORA</strong>
-        </div>
-
-        <p class="eyebrow">Final statement</p>
-        <h2>Vitora is not another fitness app. It is a personal progress system.</h2>
-        <p>
-          By connecting body, nutrition and mind, Vitora gives users one clear path:
-          train smarter, understand themselves better and build healthier habits that actually last.
-        </p>
-
-        <div class="finale-actions">
-          <a class="primary-button" href="#home">Back to start</a>
-          <a class="secondary-button" href="#business">Review business model</a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </noscript>
   </main>
 
   <aside class="presentation-controls" aria-label="Presentation controls">
-    <button id="prevSection" type="button" aria-label="Previous section">↑</button>
+    <button id="prevSection" type="button" aria-label="Previous slide">&#8592;</button>
     <div>
       <strong id="sectionCounter">1</strong>
-      <span id="sectionTotal">9</span>
+      <span id="sectionTotal">12</span>
     </div>
-    <button id="nextSection" type="button" aria-label="Next section">↓</button>
+    <button id="nextSection" type="button" aria-label="Next slide">&#8594;</button>
   </aside>
 </body>
 </html>
