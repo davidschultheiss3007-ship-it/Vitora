@@ -756,17 +756,39 @@ const VitoraPresentation = (() => {
     return `
       <div class="pricing-grid revenue-grid">
         ${slide.models
-          .map(
-            (model, index) => `
-              <article class="pricing-card reveal delay-${Math.min(index, 3)}">
-                <div class="pricing-top">
-                  <span>${escapeHtml(model.title)}</span>
-                  <strong>${escapeHtml(model.price)}</strong>
-                </div>
-                ${renderList(model.items)}
+          .map((model, index) => {
+            const delayClass = `delay-${Math.min(index, 3)}`;
+            const cardContent = `
+              <div class="pricing-top">
+                <span>${escapeHtml(model.title)}</span>
+                <strong>${escapeHtml(model.price)}</strong>
+              </div>
+              ${renderList(model.items)}
+              ${
+                model.href
+                  ? `<span class="pricing-card-cta">${escapeHtml(model.cta || "Explore model")}</span>`
+                  : ""
+              }
+            `;
+
+            if (model.href) {
+              return `
+                <a
+                  class="pricing-card pricing-card-link reveal ${delayClass}"
+                  href="${escapeHtml(model.href)}"
+                  aria-label="${escapeHtml(model.ariaLabel || `Open ${model.title}`)}"
+                >
+                  ${cardContent}
+                </a>
+              `;
+            }
+
+            return `
+              <article class="pricing-card reveal ${delayClass}">
+                ${cardContent}
               </article>
-            `
-          )
+            `;
+          })
           .join("")}
       </div>
       <div class="assumption-panel reveal">

@@ -454,6 +454,9 @@ window.VitoraSlides = [
       {
         title: "Partner plans",
         price: "B2B",
+        href: "pages/revenue/b2b.html",
+        cta: "Explore B2B model →",
+        ariaLabel: "Open the Vitora B2B revenue model detail page",
         items: ["University wellness access", "Corporate wellness packages", "Partner reporting"]
       }
     ],

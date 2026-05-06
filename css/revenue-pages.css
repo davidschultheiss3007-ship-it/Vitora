@@ -1,0 +1,504 @@
+.pricing-card-link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  cursor: pointer;
+}
+
+.pricing-card-link .clean-list {
+  flex: 1;
+}
+
+.pricing-card-link:hover {
+  background:
+    radial-gradient(circle at 82% 4%, rgba(84, 242, 167, 0.22), transparent 38%),
+    var(--glass);
+}
+
+.pricing-card-link:focus-visible {
+  border-color: var(--primary);
+  box-shadow:
+    var(--shadow),
+    0 0 0 4px var(--ring);
+  outline: 0;
+}
+
+.pricing-card-cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin-top: 26px;
+  color: var(--primary);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.revenue-page {
+  min-height: 100vh;
+}
+
+.revenue-page main {
+  overflow: hidden;
+}
+
+.revenue-page-inner {
+  width: min(var(--max-width), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.revenue-topbar {
+  position: sticky;
+  top: 18px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(var(--max-width), calc(100% - 32px));
+  min-height: 74px;
+  margin: 18px auto 0;
+  padding: 12px 14px 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(5, 8, 7, 0.72);
+  backdrop-filter: blur(24px);
+  box-shadow: var(--shadow);
+}
+
+.revenue-brand {
+  min-width: 0;
+}
+
+.revenue-label {
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.revenue-back-link {
+  min-height: 44px;
+  padding-inline: 18px;
+}
+
+.revenue-hero {
+  position: relative;
+  min-height: calc(100vh - 92px);
+  padding: 92px 0 72px;
+  display: grid;
+  align-items: center;
+}
+
+.revenue-hero::before {
+  content: "";
+  position: absolute;
+  inset: 7% 0 auto auto;
+  z-index: -1;
+  width: min(520px, 70vw);
+  height: min(520px, 70vw);
+  background: radial-gradient(circle, rgba(84, 242, 167, 0.18), transparent 68%);
+}
+
+.revenue-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.72fr);
+  gap: 44px;
+  align-items: center;
+}
+
+.revenue-hero-copy h1 {
+  max-width: 940px;
+  margin-bottom: 22px;
+}
+
+.revenue-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.hero-point-panel {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 78% 12%, rgba(85, 216, 255, 0.18), transparent 34%),
+    var(--glass);
+  backdrop-filter: blur(var(--panel-blur));
+  box-shadow: var(--shadow);
+}
+
+.hero-point-panel div,
+.revenue-card,
+.revenue-copy-panel,
+.partner-model,
+.b2b-simulator,
+.closing-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--glass);
+  backdrop-filter: blur(var(--panel-blur));
+  box-shadow: var(--shadow);
+}
+
+.hero-point-panel div {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.hero-point-panel span {
+  display: block;
+  margin-bottom: 26px;
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.hero-point-panel strong {
+  display: block;
+  font-size: 1.28rem;
+  line-height: 1.15;
+}
+
+.revenue-section {
+  padding: 86px 0;
+}
+
+.revenue-copy-panel {
+  padding: clamp(26px, 4vw, 46px);
+}
+
+.revenue-copy-panel h2 {
+  max-width: 850px;
+}
+
+.revenue-copy-panel p {
+  max-width: 920px;
+  font-size: 1.08rem;
+}
+
+.revenue-card-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.revenue-card-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.revenue-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 28px;
+  transition:
+    transform 0.24s var(--ease),
+    border-color 0.24s var(--ease),
+    background 0.24s var(--ease);
+}
+
+.revenue-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -28% -54% -28%;
+  height: 190px;
+  background: radial-gradient(circle, rgba(84, 242, 167, 0.16), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.24s var(--ease);
+}
+
+.revenue-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(84, 242, 167, 0.34);
+}
+
+.revenue-card:hover::after {
+  opacity: 1;
+}
+
+.revenue-card.accent {
+  background:
+    radial-gradient(circle at 82% 0%, rgba(84, 242, 167, 0.16), transparent 38%),
+    var(--glass);
+}
+
+.revenue-card h3,
+.revenue-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.partner-model {
+  padding: 26px;
+}
+
+.partner-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.partner-tab {
+  min-height: 54px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--muted-strong);
+  background: transparent;
+  font-weight: 880;
+  transition:
+    color 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    background 0.22s var(--ease),
+    transform 0.22s var(--ease);
+}
+
+.partner-tab:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.partner-tab.active,
+.partner-tab[aria-selected="true"] {
+  color: #06110c;
+  border-color: rgba(84, 242, 167, 0.42);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+.partner-tab:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+.partner-panel {
+  padding: 8px;
+}
+
+.partner-panel dl {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.partner-panel div {
+  min-height: 150px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.partner-panel dt {
+  margin-bottom: 14px;
+  color: var(--primary);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.partner-panel dd {
+  margin: 0;
+  color: var(--muted-strong);
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.simulator-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.65fr) minmax(420px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.b2b-simulator {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.76fr);
+  gap: 22px;
+  padding: 26px;
+}
+
+.revenue-inputs {
+  display: grid;
+  gap: 18px;
+}
+
+.revenue-inputs label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted-strong);
+  font-weight: 780;
+}
+
+.revenue-inputs label strong {
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.revenue-results {
+  display: grid;
+  gap: 12px;
+}
+
+.revenue-results div {
+  padding: 18px;
+  border: 1px solid rgba(84, 242, 167, 0.24);
+  border-radius: var(--radius-md);
+  background: rgba(84, 242, 167, 0.08);
+}
+
+.revenue-results span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.revenue-results strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.55rem;
+  line-height: 1.05;
+}
+
+.stakeholder-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.revenue-list {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.revenue-list.two-column {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.revenue-list li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--muted-strong);
+  line-height: 1.5;
+}
+
+.revenue-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: 950;
+}
+
+.revenue-closing {
+  padding: 86px 0 110px;
+}
+
+.closing-panel {
+  display: grid;
+  justify-items: center;
+  padding: clamp(34px, 6vw, 76px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(84, 242, 167, 0.22), transparent 42%),
+    linear-gradient(135deg, rgba(85, 216, 255, 0.12), transparent 46%),
+    var(--glass);
+}
+
+.closing-panel h2 {
+  max-width: 920px;
+}
+
+.closing-panel .lead {
+  margin-inline: auto;
+}
+
+@media (max-width: 1060px) {
+  .revenue-hero-grid,
+  .simulator-layout,
+  .stakeholder-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-panel dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .b2b-simulator {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .revenue-topbar {
+    position: relative;
+    top: auto;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: var(--radius-xl);
+  }
+
+  .revenue-label {
+    order: -1;
+  }
+
+  .revenue-back-link {
+    width: 100%;
+  }
+
+  .revenue-hero {
+    min-height: auto;
+    padding-top: 64px;
+  }
+
+  .revenue-card-grid.three,
+  .partner-tabs,
+  .partner-panel dl,
+  .revenue-list.two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .revenue-section {
+    padding: 62px 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .revenue-page-inner {
+    width: min(100% - 28px, var(--max-width));
+  }
+
+  .revenue-hero-copy h1 {
+    font-size: 3rem;
+  }
+
+  .revenue-hero-actions {
+    display: grid;
+  }
+
+  .hero-point-panel,
+  .partner-model,
+  .b2b-simulator {
+    padding: 18px;
+  }
+
+  .revenue-results strong {
+    font-size: 1.32rem;
+  }
+}
