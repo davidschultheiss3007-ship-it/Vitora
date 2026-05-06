@@ -22,6 +22,42 @@ const VitoraInteractions = (() => {
     }
   ];
 
+  const appPreviewModes = {
+    move: {
+      score: 87,
+      label: "Habits aligned",
+      stack: [
+        ["Goal", "3 balanced meals"],
+        ["Habit", "Evening walk"],
+        ["Progress", "On track"]
+      ],
+      coach:
+        "Keep today's plan simple: prepare one balanced meal and log how it supports your energy."
+    },
+    fuel: {
+      score: 74,
+      label: "Dinner focus",
+      stack: [
+        ["Breakfast", "Logged"],
+        ["Lunch", "Balanced plate"],
+        ["Dinner", "Plan needed"]
+      ],
+      coach:
+        "Add a protein-rich, vegetable-based dinner and avoid turning the day into a calorie calculation."
+    },
+    mind: {
+      score: 91,
+      label: "Reflection strong",
+      stack: [
+        ["Mood", "Positive"],
+        ["Energy", "Stable"],
+        ["Check-in", "2 min streak"]
+      ],
+      coach:
+        "Use the evening check-in to notice what worked today and choose one realistic step for tomorrow."
+    }
+  };
+
   function readStoredTheme() {
     try {
       return localStorage.getItem("vitora-theme");
@@ -126,33 +162,92 @@ const VitoraInteractions = (() => {
   }
 
   function initTabs() {
-    const tabButtons = Array.from(document.querySelectorAll(".tab-button"));
-    const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
-    if (!tabButtons.length || !tabPanels.length) return;
+    const tabGroups = Array.from(document.querySelectorAll(".tabs"));
+    if (!tabGroups.length) return;
 
-    tabButtons.forEach((button) => {
-      button.setAttribute("aria-selected", button.classList.contains("active") ? "true" : "false");
+    tabGroups.forEach((group) => {
+      const tabButtons = Array.from(group.querySelectorAll(".tab-button[data-tab]"));
+      const tabPanels = Array.from(group.querySelectorAll(".tab-panel"));
+      if (!tabButtons.length || !tabPanels.length) return;
 
-      button.addEventListener("click", () => {
-        const target = button.dataset.tab;
-        if (!target) return;
+      tabButtons.forEach((button) => {
+        button.setAttribute("aria-selected", button.classList.contains("active") ? "true" : "false");
 
-        tabButtons.forEach((tabButton) => {
-          const isActive = tabButton === button;
-          tabButton.classList.toggle("active", isActive);
-          tabButton.setAttribute("aria-selected", isActive ? "true" : "false");
-        });
+        button.addEventListener("click", () => {
+          const target = button.dataset.tab;
+          if (!target) return;
 
-        tabPanels.forEach((panel) => {
-          const isActive = panel.id === target;
-          panel.classList.toggle("active", isActive);
-          panel.hidden = !isActive;
+          tabButtons.forEach((tabButton) => {
+            const isActive = tabButton === button;
+            tabButton.classList.toggle("active", isActive);
+            tabButton.setAttribute("aria-selected", isActive ? "true" : "false");
+          });
+
+          tabPanels.forEach((panel) => {
+            const isActive = panel.id === target;
+            panel.classList.toggle("active", isActive);
+            panel.hidden = !isActive;
+          });
         });
       });
-    });
 
-    tabPanels.forEach((panel) => {
-      panel.hidden = !panel.classList.contains("active");
+      tabPanels.forEach((panel) => {
+        panel.hidden = !panel.classList.contains("active");
+      });
+    });
+  }
+
+  function renderAppPreviewStack(stackElement, items) {
+    stackElement.replaceChildren(
+      ...items.map(([label, value]) => {
+        const row = document.createElement("div");
+        const labelElement = document.createElement("span");
+        const valueElement = document.createElement("strong");
+
+        labelElement.textContent = label;
+        valueElement.textContent = value;
+        row.append(labelElement, valueElement);
+
+        return row;
+      })
+    );
+  }
+
+  function initAppPreview() {
+    const previews = Array.from(document.querySelectorAll("[data-app-preview]"));
+    if (!previews.length) return;
+
+    previews.forEach((preview) => {
+      const modeControls = Array.from(preview.querySelectorAll("[data-app-mode]"));
+      const scoreElement = preview.querySelector("[data-app-preview-score]");
+      const labelElement = preview.querySelector("[data-app-preview-label]");
+      const stackElement = preview.querySelector("[data-app-preview-stack]");
+      const coachElement = preview.querySelector("[data-app-preview-coach]");
+      const ringElement = preview.querySelector("[data-app-preview-ring]");
+
+      function activateMode(mode) {
+        const data = appPreviewModes[mode] || appPreviewModes.move;
+
+        modeControls.forEach((control) => {
+          const isActive = control.dataset.appMode === mode;
+          control.classList.toggle("active", isActive);
+          control.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        if (scoreElement) scoreElement.textContent = `${data.score}%`;
+        if (labelElement) labelElement.textContent = data.label;
+        if (ringElement) ringElement.style.setProperty("--score-percent", `${data.score}%`);
+        if (stackElement) renderAppPreviewStack(stackElement, data.stack);
+        if (coachElement) coachElement.textContent = data.coach;
+      }
+
+      modeControls.forEach((control) => {
+        control.addEventListener("click", () => {
+          activateMode(control.dataset.appMode || "move");
+        });
+      });
+
+      activateMode("move");
     });
   }
 
@@ -201,21 +296,21 @@ const VitoraInteractions = (() => {
     const areas = [
       {
         value: training,
-        strong: "Training is the lowest signal, but still solid. Keep progression controlled and protect recovery.",
-        medium: "Training consistency is the weakest signal. Start with a shorter workout and rebuild momentum.",
-        low: "Training needs structure first. Choose one achievable session today before adding intensity."
+        strong: "Habit consistency is the lowest signal, but still solid. Keep the next action small and repeatable.",
+        medium: "Habit consistency is the weakest signal. Choose one realistic routine before adding another goal.",
+        low: "Habits need structure first. Pick one achievable action today and make it easy to repeat."
       },
       {
         value: nutrition,
-        strong: "Nutrition is the lowest signal, but the day is still aligned. Add one protein-rich meal to lock it in.",
-        medium: "Nutrition is limiting progress. Increase protein and plan one simple high-quality meal today.",
+        strong: "Nutrition is the lowest signal, but the day is still aligned. Add one balanced meal to lock it in.",
+        medium: "Nutrition is limiting progress. Plan one simple, high-quality meal today.",
         low: "Nutrition needs attention first. Build the next meal around protein, fiber and hydration."
       },
       {
         value: mood,
-        strong: "Mental wellbeing is the lowest signal, but still stable. Keep tomorrow's intensity moderate.",
-        medium: "Mental wellbeing needs attention. Reduce intensity slightly and prioritize recovery before pushing harder.",
-        low: "Recovery should lead today. Use a lighter session, sleep routine and a short mood check-in."
+        strong: "Coaching reflection is the lowest signal, but still stable. End the day with one honest check-in.",
+        medium: "Reflection needs attention. Reduce pressure and focus on what made the habit easier or harder.",
+        low: "Support should lead today. Use one kind check-in and choose a lighter next step."
       }
     ];
     const weakest = areas.reduce((lowest, area) => (area.value < lowest.value ? area : lowest), areas[0]);
@@ -357,6 +452,7 @@ const VitoraInteractions = (() => {
     initThemeToggle();
     initFullscreenToggle();
     initTabs();
+    initAppPreview();
     initRoadmap();
     initScoreSimulator();
     initRevenueCalculator();

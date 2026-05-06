@@ -69,10 +69,57 @@ const VitoraPresentation = (() => {
           <p class="lead">${escapeHtml(slide.subtitle)}</p>
           <div class="presenter-line">${escapeHtml(slide.speaker)}</div>
         </div>
-        <div class="brand-stage reveal delay-1">
-          <span class="stage-mark">V</span>
-          <strong>${escapeHtml(slide.title)}</strong>
-          <small>${escapeHtml(slide.tagline)}</small>
+        <div class="hero-visual app-preview reveal delay-1" data-app-preview>
+          <div class="orbit-ring" aria-hidden="true"></div>
+          <button class="floating-chip chip-one active" type="button" data-app-mode="move" aria-pressed="true">
+            <span>Plan</span>
+            <strong>Weekly habits</strong>
+          </button>
+          <button class="floating-chip chip-two" type="button" data-app-mode="fuel" aria-pressed="false">
+            <span>Eat</span>
+            <strong>Balanced dinner</strong>
+          </button>
+          <button class="floating-chip chip-three" type="button" data-app-mode="mind" aria-pressed="false">
+            <span>Coach</span>
+            <strong>Kind feedback</strong>
+          </button>
+
+          <div class="phone-frame" aria-label="Interactive Vitora app preview">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="app-screen" style="--score-percent: 87%;">
+              <div class="app-header">
+                <div>
+                  <small>Vitora today</small>
+                  <strong>Habit Coach</strong>
+                </div>
+                <span class="pulse-dot" aria-hidden="true"></span>
+              </div>
+
+              <div class="score-ring" data-app-preview-ring style="--score-percent: 87%;">
+                <div>
+                  <strong data-app-preview-score>87%</strong>
+                  <span data-app-preview-label>Habits aligned</span>
+                </div>
+              </div>
+
+              <div class="tab-buttons app-mode-tabs" role="group" aria-label="App preview modes">
+                <button class="tab-button active" type="button" data-app-mode="move" aria-pressed="true">Plan</button>
+                <button class="tab-button" type="button" data-app-mode="fuel" aria-pressed="false">Eat</button>
+                <button class="tab-button" type="button" data-app-mode="mind" aria-pressed="false">Coach</button>
+              </div>
+
+              <div class="mini-stack" data-app-preview-stack>
+                <div><span>Goal</span><strong>3 balanced meals</strong></div>
+                <div><span>Habit</span><strong>Evening walk</strong></div>
+                <div><span>Progress</span><strong>On track</strong></div>
+              </div>
+
+              <div class="ai-card">
+                <span>AI Coach</span>
+                <p data-app-preview-coach>Keep today's plan simple: prepare one balanced meal and log how it supports your energy.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `;
@@ -90,6 +137,24 @@ const VitoraPresentation = (() => {
           ${renderMetrics(slide.metrics, "metric-grid two")}
         </div>
       </div>
+      ${
+        slide.profile
+          ? `
+            <div class="profile-grid reveal">
+              ${slide.profile
+                .map(
+                  (item) => `
+                    <article class="profile-card">
+                      <span>${escapeHtml(item.label)}</span>
+                      <strong>${escapeHtml(item.value)}</strong>
+                    </article>
+                  `
+                )
+                .join("")}
+            </div>
+          `
+          : ""
+      }
       <div class="section-inner reveal">
         ${renderNotes(slide)}
       </div>
@@ -142,6 +207,29 @@ const VitoraPresentation = (() => {
           )
           .join("")}
       </div>
+      ${
+        slide.values
+          ? `
+            <div class="section-heading reveal values-heading">
+              <p class="eyebrow">Corporate Values</p>
+              <h3>The principles behind every product and communication decision.</h3>
+            </div>
+            <div class="value-grid">
+              ${slide.values
+                .map(
+                  (value, index) => `
+                    <article class="value-card reveal delay-${Math.min(index, 3)}">
+                      <span>${String(index + 1).padStart(2, "0")}</span>
+                      <h3>${escapeHtml(value.title)}</h3>
+                      <p>${escapeHtml(value.text)}</p>
+                    </article>
+                  `
+                )
+                .join("")}
+            </div>
+          `
+          : ""
+      }
       <div class="section-inner reveal">
         ${renderNotes(slide)}
       </div>
@@ -187,9 +275,38 @@ const VitoraPresentation = (() => {
         </div>
       </div>
       <div class="market-signal reveal">
-        <span>${escapeHtml(slide.notes)}</span>
-        <strong>${escapeHtml(slide.metrics[0].value)}</strong>
+        <span>${escapeHtml(slide.signalLabel || slide.notes || "Market focus")}</span>
+        <strong>${escapeHtml(slide.signalValue || slide.metrics?.[0]?.value || "")}</strong>
         <div class="market-line" aria-hidden="true"><span></span></div>
+      </div>
+    `;
+  }
+
+  function renderProblem(slide) {
+    return `
+      <div class="problem-layout">
+        <div class="problem-lead reveal">
+          <p class="eyebrow">Business need</p>
+          <h2>${escapeHtml(slide.title)}</h2>
+          <p>${escapeHtml(slide.intro)}</p>
+          <div class="problem-highlight">${escapeHtml(slide.challenge)}</div>
+        </div>
+        <div class="problem-grid">
+          ${slide.points
+            .map(
+              (point, index) => `
+                <article class="presentation-card reveal delay-${Math.min(index + 1, 3)}">
+                  <span class="card-number">${String(index + 1).padStart(2, "0")}</span>
+                  <h3>${escapeHtml(point.title)}</h3>
+                  <p>${escapeHtml(point.text)}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="section-inner reveal">
+        ${renderNotes(slide)}
       </div>
     `;
   }
@@ -212,8 +329,8 @@ const VitoraPresentation = (() => {
           )
           .join("")}
       </div>
-      ${renderRevenueCalculator()}
-      ${renderRoadmap()}
+      ${slide.includeCalculator === false ? "" : renderRevenueCalculator()}
+      ${slide.includeRoadmap === false ? "" : renderRoadmap()}
     `;
   }
 
@@ -221,36 +338,36 @@ const VitoraPresentation = (() => {
     return `
       <div class="section-inner tabs presentation-tabs reveal">
         <div class="tab-buttons" role="tablist" aria-label="Vitora product modules">
-          <button class="tab-button active" type="button" data-tab="training">Move</button>
+          <button class="tab-button active" type="button" data-tab="training">Plan</button>
           <button class="tab-button" type="button" data-tab="nutrition">Fuel</button>
-          <button class="tab-button" type="button" data-tab="mental">Mind</button>
+          <button class="tab-button" type="button" data-tab="mental">Reflect</button>
         </div>
 
         <div class="tab-panel active" id="training">
           <div class="module-layout">
             <div class="module-copy">
-              <p class="eyebrow">Move</p>
-              <h3>Personalised training plans for every level and goal.</h3>
-              <p>Vitora turns goals, equipment and performance history into a practical training flow.</p>
+              <p class="eyebrow">Plan</p>
+              <h3>Personalized habit plans for realistic weight-management goals.</h3>
+              <p>Vitora turns goals, schedules and lifestyle limits into simple weekly actions.</p>
               <div class="feature-list">
-                <div><strong>Goal-based planning</strong><span>Adapted to objective, level and location.</span></div>
-                <div><strong>Set logging</strong><span>Weight and repetitions are recorded per set.</span></div>
-                <div><strong>Progress feedback</strong><span>Training history becomes visible and motivating.</span></div>
-                <div><strong>AI suggestions</strong><span>The coach recommends the next sensible adjustment.</span></div>
+                <div><strong>Goal-based planning</strong><span>Adapted to personal objectives and routines.</span></div>
+                <div><strong>Habit logging</strong><span>Meals, movement and reflection stay in one calm view.</span></div>
+                <div><strong>Progress feedback</strong><span>Small wins become visible and motivating.</span></div>
+                <div><strong>AI suggestions</strong><span>The coach recommends the next realistic adjustment.</span></div>
               </div>
             </div>
             <div class="module-demo">
-              <div class="demo-header"><span>Training plan</span><strong>Push Day</strong></div>
+              <div class="demo-header"><span>Weekly habit plan</span><strong>Week 03</strong></div>
               <div class="workout-list">
-                <div><span>Bench press</span><strong>4 x 8-10</strong></div>
-                <div><span>Shoulder press</span><strong>3 x 10-12</strong></div>
-                <div><span>Lateral raise</span><strong>3 x 12-15</strong></div>
-                <div><span>Triceps pushdown</span><strong>3 x 12-15</strong></div>
+                <div><span>Breakfast habit</span><strong>Protein + fiber</strong></div>
+                <div><span>Lunch routine</span><strong>Balanced plate</strong></div>
+                <div><span>Evening habit</span><strong>Short walk</strong></div>
+                <div><span>Reflection</span><strong>2 min check-in</strong></div>
               </div>
               <div class="suggestion-card">
                 <span>AI coaching cue</span>
-                <strong>Controlled progression</strong>
-                <p>Use recent performance to decide whether the next session should increase load or protect recovery.</p>
+                <strong>Keep it realistic</strong>
+                <p>Choose one nutrition habit before adding another target, so progress stays sustainable.</p>
               </div>
             </div>
           </div>
@@ -260,35 +377,35 @@ const VitoraPresentation = (() => {
           <div class="module-layout">
             <div class="module-copy">
               <p class="eyebrow">Fuel</p>
-              <h3>Nutrition tracking with smart meal and macro insights.</h3>
-              <p>The nutrition module supports the training goal instead of standing alone as a food diary.</p>
+              <h3>Nutrition tracking with smart meal and habit insights.</h3>
+              <p>The nutrition module supports sustainable routines instead of acting as a restrictive food diary.</p>
               <div class="feature-list">
-                <div><strong>Food tracking</strong><span>Meals, calories and macros stay in one view.</span></div>
-                <div><strong>Macro focus</strong><span>Protein, carbs and fat are compared with targets.</span></div>
-                <div><strong>Smart tips</strong><span>Guidance is linked to the user's goal.</span></div>
-                <div><strong>Training connection</strong><span>Nutrition feedback reacts to activity and progress.</span></div>
+                <div><strong>Food tracking</strong><span>Meals and patterns stay visible without obsession.</span></div>
+                <div><strong>Balance focus</strong><span>Protein, fiber and regular meals are prioritized.</span></div>
+                <div><strong>Smart tips</strong><span>Guidance is linked to the user's goal and context.</span></div>
+                <div><strong>Sustainable choices</strong><span>Recommendations can include planet-aware food options.</span></div>
               </div>
             </div>
             <div class="module-demo">
-              <div class="demo-header"><span>Daily overview</span><strong>1,840 / 2,800 kcal</strong></div>
+              <div class="demo-header"><span>Daily overview</span><strong>Balanced day</strong></div>
               <div class="macro-bars">
                 <div>
-                  <div class="macro-label"><span>Protein</span><strong>142g / 160g</strong></div>
+                  <div class="macro-label"><span>Protein</span><strong>Strong</strong></div>
                   <div class="bar"><span style="--value: 89%"></span></div>
                 </div>
                 <div>
-                  <div class="macro-label"><span>Carbs</span><strong>198g / 250g</strong></div>
+                  <div class="macro-label"><span>Vegetables</span><strong>Good</strong></div>
                   <div class="bar"><span style="--value: 79%"></span></div>
                 </div>
                 <div>
-                  <div class="macro-label"><span>Fat</span><strong>55g / 70g</strong></div>
+                  <div class="macro-label"><span>Regular meals</span><strong>Stable</strong></div>
                   <div class="bar"><span style="--value: 78%"></span></div>
                 </div>
               </div>
               <div class="suggestion-card">
                 <span>AI nutrition cue</span>
-                <strong>More protein</strong>
-                <p>Prioritise one protein-rich meal to support today's training goal.</p>
+                <strong>Balanced dinner</strong>
+                <p>Prioritize one protein-rich, vegetable-based dinner and keep the evening routine simple.</p>
               </div>
             </div>
           </div>
@@ -297,18 +414,18 @@ const VitoraPresentation = (() => {
         <div class="tab-panel" id="mental">
           <div class="module-layout">
             <div class="module-copy">
-              <p class="eyebrow">Mind</p>
-              <h3>Mindfulness, sleep coaching and mood tracking.</h3>
-              <p>The mental health module connects recovery, motivation and wellbeing to physical progress.</p>
+              <p class="eyebrow">Reflect</p>
+              <h3>Supportive check-ins for motivation and everyday wellbeing.</h3>
+              <p>The reflection module connects progress, energy and motivation to practical next steps.</p>
               <div class="feature-list">
-                <div><strong>Mood check-ins</strong><span>Users reflect on how they feel after training.</span></div>
-                <div><strong>Sleep coaching</strong><span>Recovery becomes part of the daily plan.</span></div>
-                <div><strong>Mindfulness</strong><span>Short sessions support calm and consistency.</span></div>
-                <div><strong>Pattern detection</strong><span>Vitora links wellbeing signals with training behaviour.</span></div>
+                <div><strong>Mood check-ins</strong><span>Users reflect on motivation without judgment.</span></div>
+                <div><strong>Routine support</strong><span>Recovery and energy become part of the plan.</span></div>
+                <div><strong>Empathy cues</strong><span>Language avoids shame and unrealistic pressure.</span></div>
+                <div><strong>Pattern detection</strong><span>Vitora links wellbeing signals with habit behavior.</span></div>
               </div>
             </div>
             <div class="module-demo">
-              <div class="demo-header"><span>Mood trend</span><strong>Last 10 days</strong></div>
+              <div class="demo-header"><span>Reflection trend</span><strong>Last 10 days</strong></div>
               <div class="mood-chart" aria-label="Mood trend from 1 to 10">
                 <span style="--height: 60%">6</span>
                 <span style="--height: 70%">7</span>
@@ -322,8 +439,8 @@ const VitoraPresentation = (() => {
                 <span style="--height: 80%">8</span>
               </div>
               <div class="mental-stats">
-                <div><strong>8.2</strong><span>average mood</span></div>
-                <div><strong>78%</strong><span>positive effect</span></div>
+                <div><strong>8.2</strong><span>average motivation</span></div>
+                <div><strong>78%</strong><span>habit stability</span></div>
               </div>
             </div>
           </div>
@@ -338,7 +455,7 @@ const VitoraPresentation = (() => {
         <div class="section-heading left">
           <p class="eyebrow">Interactive demo</p>
           <h3>Try the Vitora alignment score.</h3>
-          <p>This demonstrates the core idea from the USP: training, nutrition and mood should create one practical signal for the user.</p>
+          <p>This demonstrates the core idea from the USP: habits, nutrition and coaching reflection should create one practical signal for the user.</p>
         </div>
         <div class="simulator-card">
           <div class="simulator-score">
@@ -347,7 +464,7 @@ const VitoraPresentation = (() => {
           </div>
 
           <div class="slider-group">
-            <label for="trainingSlider"><span>Training consistency</span><strong id="trainingValue">85</strong></label>
+            <label for="trainingSlider"><span>Habit consistency</span><strong id="trainingValue">85</strong></label>
             <input id="trainingSlider" type="range" min="0" max="100" value="85" />
           </div>
           <div class="slider-group">
@@ -355,12 +472,12 @@ const VitoraPresentation = (() => {
             <input id="nutritionSlider" type="range" min="0" max="100" value="88" />
           </div>
           <div class="slider-group">
-            <label for="moodSlider"><span>Mental wellbeing</span><strong id="moodValue">89</strong></label>
+            <label for="moodSlider"><span>Coaching reflection</span><strong id="moodValue">89</strong></label>
             <input id="moodSlider" type="range" min="0" max="100" value="89" />
           </div>
 
           <div class="ai-recommendation" id="scoreRecommendation">
-            Increase protein today and keep tomorrow's training intensity moderate.
+            Keep today's goal simple: one balanced meal, one realistic habit and one short reflection.
           </div>
         </div>
       </div>
@@ -495,6 +612,16 @@ const VitoraPresentation = (() => {
 
   function renderResponsibility(slide) {
     return `
+      ${
+        slide.statement
+          ? `
+            <div class="definition-panel reveal">
+              <h2>${escapeHtml(slide.title)}</h2>
+              <p>${escapeHtml(slide.statement)}</p>
+            </div>
+          `
+          : ""
+      }
       ${renderMetrics(slide.commitments, "metric-grid three-wide")}
       <div class="responsibility-grid">
         ${slide.lanes
@@ -535,9 +662,140 @@ const VitoraPresentation = (() => {
           <p class="eyebrow">Integration</p>
           <h3>One brand, one voice.</h3>
           <p>${escapeHtml(slide.integration)}</p>
+          ${
+            slide.tone
+              ? `
+                <div class="tone-panel">
+                  <strong>Tone of Voice</strong>
+                  ${renderList(slide.tone)}
+                </div>
+              `
+              : ""
+          }
           ${renderList(slide.integrationPoints)}
         </div>
       </div>
+    `;
+  }
+
+  function renderService(slide) {
+    return `
+      <div class="section-heading reveal">
+        <p class="eyebrow">Product and service definition</p>
+        <h2>${escapeHtml(slide.title)}</h2>
+        <p>${escapeHtml(slide.intro)}</p>
+      </div>
+      <div class="service-grid">
+        ${slide.steps
+          .map(
+            (step, index) => `
+              <article class="service-card reveal delay-${Math.min(index, 3)}">
+                <span>${escapeHtml(step.number)}</span>
+                <h3>${escapeHtml(step.title)}</h3>
+                <p>${escapeHtml(step.text)}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  function renderJourney(slide) {
+    return `
+      <div class="section-heading reveal">
+        <p class="eyebrow">Customer experience</p>
+        <h2>${escapeHtml(slide.title)}</h2>
+      </div>
+      <div class="journey-track">
+        ${slide.stages
+          .map(
+            (stage, index) => `
+              <article class="journey-stage reveal delay-${Math.min(index, 3)}">
+                <span>${String(index + 1).padStart(2, "0")}</span>
+                <h3>${escapeHtml(stage.title)}</h3>
+                <p>${escapeHtml(stage.text)}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  function renderOperations(slide) {
+    return `
+      <div class="operations-layout">
+        <div class="role-grid reveal">
+          ${slide.roles
+            .map(
+              (role, index) => `
+                <article class="role-card delay-${Math.min(index, 3)}">
+                  <h3>${escapeHtml(role.title)}</h3>
+                  <p>${escapeHtml(role.text)}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+        <div class="operations-side reveal delay-1">
+          <div>
+            <p class="eyebrow">Key partners</p>
+            ${renderList(slide.partners)}
+          </div>
+          <div>
+            <p class="eyebrow">Operational process</p>
+            ${renderList(slide.process)}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderRevenue(slide) {
+    return `
+      <div class="pricing-grid revenue-grid">
+        ${slide.models
+          .map((model, index) => {
+            const delayClass = `delay-${Math.min(index, 3)}`;
+            const cardContent = `
+              <div class="pricing-top">
+                <span>${escapeHtml(model.title)}</span>
+                <strong>${escapeHtml(model.price)}</strong>
+              </div>
+              ${renderList(model.items)}
+              ${
+                model.href
+                  ? `<span class="pricing-card-cta">${escapeHtml(model.cta || "Explore model")}</span>`
+                  : ""
+              }
+            `;
+
+            if (model.href) {
+              return `
+                <a
+                  class="pricing-card pricing-card-link reveal ${delayClass}"
+                  href="${escapeHtml(model.href)}"
+                  aria-label="${escapeHtml(model.ariaLabel || `Open ${model.title}`)}"
+                >
+                  ${cardContent}
+                </a>
+              `;
+            }
+
+            return `
+              <article class="pricing-card reveal ${delayClass}">
+                ${cardContent}
+              </article>
+            `;
+          })
+          .join("")}
+      </div>
+      <div class="assumption-panel reveal">
+        <p class="eyebrow">Financial logic</p>
+        ${renderList(slide.assumptions)}
+      </div>
+      ${renderRevenueCalculator()}
     `;
   }
 
@@ -553,8 +811,23 @@ const VitoraPresentation = (() => {
     `;
   }
 
+  function renderConclusion(slide) {
+    return `
+      <div class="conclusion-panel reveal">
+        <span class="stage-mark">V</span>
+        <p class="eyebrow">Conclusion</p>
+        <h2>${escapeHtml(slide.title)}</h2>
+        <p class="lead">${escapeHtml(slide.subtitle)}</p>
+        ${renderList(slide.takeaways, "takeaway-list")}
+        <strong>${escapeHtml(slide.tagline)}</strong>
+        <small>${escapeHtml(slide.footer)}</small>
+      </div>
+    `;
+  }
+
   const layouts = {
     cover: renderCover,
+    problem: renderProblem,
     company: renderCompany,
     brand: renderBrand,
     purpose: renderPurpose,
@@ -563,8 +836,13 @@ const VitoraPresentation = (() => {
     strategy: renderStrategy,
     identity: renderIdentity,
     stakeholders: renderStakeholders,
+    service: renderService,
+    journey: renderJourney,
+    operations: renderOperations,
+    revenue: renderRevenue,
     responsibility: renderResponsibility,
     communication: renderCommunication,
+    conclusion: renderConclusion,
     thanks: renderThanks
   };
 

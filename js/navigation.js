@@ -44,8 +44,14 @@ const VitoraNavigation = (() => {
       progressBar.style.width = `${progress}%`;
     }
 
+    const isCompact = window.scrollY > 24;
+
     if (siteHeader) {
-      siteHeader.classList.toggle("compact", window.scrollY > 24);
+      siteHeader.classList.toggle("compact", isCompact);
+    }
+
+    if (document.body) {
+      document.body.classList.toggle("is-scrolled", isCompact);
     }
   }
 
@@ -62,13 +68,31 @@ const VitoraNavigation = (() => {
     }
   }
 
+  function scrollActiveNavLinkIntoView(link) {
+    const nav = link.closest(".main-nav");
+    if (!nav || nav.scrollWidth <= nav.clientWidth) return;
+
+    const targetLeft = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
+    const maxLeft = nav.scrollWidth - nav.clientWidth;
+
+    nav.scrollTo({
+      left: clamp(targetLeft, 0, maxLeft),
+      behavior: "smooth"
+    });
+  }
+
   function updateNavigation(activeId) {
     navLinks.forEach((link) => {
       const href = link.getAttribute("href");
       if (!href || !href.startsWith("#")) return;
 
       const targetId = href.replace("#", "");
-      link.classList.toggle("active", targetId === activeId);
+      const isActive = targetId === activeId;
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        scrollActiveNavLinkIntoView(link);
+      }
     });
   }
 
@@ -198,7 +222,14 @@ const VitoraNavigation = (() => {
     updateProgress();
     setActiveSection(getSectionIndexFromScroll());
 
-    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        updateProgress();
+        setActiveSection(getSectionIndexFromScroll());
+      },
+      { passive: true }
+    );
     window.addEventListener("resize", () => {
       updateProgress();
       setActiveSection(getSectionIndexFromScroll());

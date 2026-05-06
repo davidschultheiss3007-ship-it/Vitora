@@ -49,13 +49,60 @@ html[data-theme="light"] .site-header {
   background: rgba(255, 255, 255, 0.78);
 }
 
-.site-header.compact {
-  min-height: 64px;
-  background: rgba(5, 8, 7, 0.82);
+.site-header.compact,
+body.is-scrolled .site-header {
+  top: 8px;
+  justify-content: center;
+  width: min(920px, calc(100% - 30px));
+  min-height: 42px;
+  padding: 4px;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
 }
 
-html[data-theme="light"] .site-header.compact {
-  background: rgba(255, 255, 255, 0.88);
+html[data-theme="light"] .site-header.compact,
+html[data-theme="light"] body.is-scrolled .site-header {
+  background: transparent;
+}
+
+.site-header.compact .brand,
+.site-header.compact .header-actions,
+body.is-scrolled .site-header .brand,
+body.is-scrolled .site-header .header-actions {
+  width: 0;
+  min-width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-header.compact .main-nav,
+body.is-scrolled .site-header .main-nav {
+  display: flex;
+  max-width: min(900px, calc(100vw - 40px));
+  border-color: transparent;
+  background: rgba(5, 8, 7, 0.22);
+  backdrop-filter: blur(12px);
+}
+
+html[data-theme="light"] .site-header.compact .main-nav,
+html[data-theme="light"] body.is-scrolled .site-header .main-nav {
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.site-header.compact .main-nav a,
+body.is-scrolled .site-header .main-nav a {
+  padding: 7px 10px;
+  background: transparent;
+  font-size: 0.76rem;
+}
+
+.site-header.compact .main-nav a.active,
+body.is-scrolled .site-header .main-nav a.active {
+  color: var(--primary);
+  background: rgba(84, 242, 167, 0.1);
 }
 
 .brand {
@@ -335,6 +382,11 @@ html[data-theme="light"] .site-header.compact {
 
   .site-header {
     width: min(calc(100% - 22px), var(--max-width));
+  }
+
+  .site-header.compact .main-nav,
+  body.is-scrolled .site-header .main-nav {
+    display: flex;
   }
 }
 

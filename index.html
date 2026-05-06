@@ -12,13 +12,18 @@
 
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/theme.css" />
-  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/layout.css?v=3" />
   <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/revenue-pages.css" />
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2354f2a7'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Arial,sans-serif' font-size='36' font-weight='800' fill='%2306110c'%3EV%3C/text%3E%3C/svg%3E"
+  />
 
   <script src="data/slides.js" defer></script>
   <script src="js/presentation.js" defer></script>
-  <script src="js/navigation.js" defer></script>
-  <script src="js/interactions.js" defer></script>
+  <script src="js/navigation.js?v=3" defer></script>
+  <script src="js/website-interactions.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 
@@ -37,16 +42,6 @@
 
     <nav class="main-nav" id="mainNav" aria-label="Presentation navigation"></nav>
 
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#problem">Problem</a>
-      <a href="#solution">Solution</a>
-      <a href="#simulator">Score Demo</a>
-      <a href="#product">Product</a>
-      <a href="#market">Market</a>
-      <a href="#business">Business</a>
-      <a href="#roadmap">Roadmap</a>
-    </nav>
- 
     <div class="header-actions">
       <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme">&#9790;</button>
       <button class="nav-cta" id="fullscreenToggle" type="button">Present</button>
@@ -68,7 +63,7 @@
     <button id="prevSection" type="button" aria-label="Previous slide">&#8592;</button>
     <div>
       <strong id="sectionCounter">1</strong>
-      <span id="sectionTotal">12</span>
+      <span id="sectionTotal">16</span>
     </div>
     <button id="nextSection" type="button" aria-label="Next slide">&#8594;</button>
   </aside>
