@@ -346,6 +346,13 @@
   white-space: nowrap;
 }
 
+.simulator-helper {
+  margin: -4px 0 2px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
 .revenue-results {
   display: grid;
   gap: 12px;
@@ -356,6 +363,11 @@
   border: 1px solid rgba(84, 242, 167, 0.24);
   border-radius: var(--radius-md);
   background: rgba(84, 242, 167, 0.08);
+}
+
+.revenue-results .featured-result {
+  border-color: rgba(84, 242, 167, 0.55);
+  background: rgba(84, 242, 167, 0.14);
 }
 
 .revenue-results span {
@@ -370,6 +382,10 @@
   color: var(--text);
   font-size: 1.55rem;
   line-height: 1.05;
+}
+
+.revenue-results .featured-result strong {
+  color: var(--primary);
 }
 
 .stakeholder-layout {
@@ -500,5 +516,170 @@
 
   .revenue-results strong {
     font-size: 1.32rem;
+  }
+}
+
+/* Premium B2B detail skin aligned with the main Vitora deck. */
+.revenue-page {
+  background:
+    radial-gradient(circle at 74% 16%, rgba(37, 228, 211, 0.14), transparent 28rem),
+    radial-gradient(circle at 18% 40%, rgba(89, 245, 168, 0.12), transparent 31rem),
+    linear-gradient(145deg, #020504, var(--bg) 42%, var(--bg-soft));
+}
+
+.revenue-topbar {
+  border-color: rgba(190, 255, 225, 0.18);
+  background:
+    linear-gradient(135deg, rgba(12, 36, 29, 0.9), rgba(3, 10, 8, 0.7)),
+    rgba(5, 8, 7, 0.74);
+  backdrop-filter: blur(26px) saturate(1.25);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 42px rgba(89, 245, 168, 0.08);
+}
+
+.revenue-hero {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.revenue-hero::before {
+  inset: 4% -6% auto auto;
+  width: min(680px, 74vw);
+  height: min(680px, 74vw);
+  background:
+    radial-gradient(circle, rgba(89, 245, 168, 0.2), transparent 62%),
+    radial-gradient(circle at 58% 42%, rgba(37, 228, 211, 0.14), transparent 42%);
+  filter: blur(2px);
+}
+
+.revenue-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -12% 7% 28%;
+  z-index: -1;
+  height: 34vh;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(108deg, transparent 0 28px, rgba(37, 228, 211, 0.14) 29px, transparent 30px 64px),
+    radial-gradient(ellipse at 50% 100%, rgba(89, 245, 168, 0.24), transparent 62%);
+  opacity: 0.38;
+  transform: perspective(960px) rotateX(62deg);
+}
+
+.revenue-hero-copy h1 {
+  max-width: 980px;
+  font-size: clamp(4rem, 7.2vw, 7rem);
+  line-height: 0.88;
+  text-shadow:
+    0 0 36px rgba(89, 245, 168, 0.13),
+    0 18px 46px rgba(0, 0, 0, 0.42);
+}
+
+.revenue-hero-copy .lead {
+  max-width: 720px;
+  color: var(--muted-strong);
+}
+
+.hero-point-panel,
+.hero-point-panel div,
+.revenue-card,
+.revenue-copy-panel,
+.partner-model,
+.b2b-simulator,
+.closing-panel {
+  border-color: rgba(194, 255, 226, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025) 38%, rgba(89, 245, 168, 0.035)),
+    rgba(7, 25, 20, 0.7);
+  backdrop-filter: blur(26px) saturate(1.2);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 0 44px rgba(89, 245, 168, 0.07);
+}
+
+.hero-point-panel {
+  background:
+    radial-gradient(circle at 78% 12%, rgba(37, 228, 211, 0.19), transparent 34%),
+    radial-gradient(circle at 16% 88%, rgba(89, 245, 168, 0.16), transparent 38%),
+    rgba(7, 25, 20, 0.74);
+}
+
+.hero-point-panel span,
+.revenue-card .card-number,
+.partner-panel dt,
+.revenue-inputs label strong,
+.revenue-results .featured-result strong {
+  text-shadow: 0 0 20px rgba(89, 245, 168, 0.24);
+}
+
+.revenue-card {
+  transform-style: preserve-3d;
+}
+
+.revenue-card:hover {
+  border-color: rgba(89, 245, 168, 0.42);
+  box-shadow:
+    var(--shadow),
+    0 0 38px rgba(89, 245, 168, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.revenue-card.accent,
+.revenue-results .featured-result,
+.partner-tab.active,
+.partner-tab[aria-selected="true"] {
+  box-shadow: 0 0 26px rgba(89, 245, 168, 0.16);
+}
+
+.partner-tabs {
+  border-color: rgba(190, 255, 225, 0.16);
+  background: rgba(4, 15, 12, 0.6);
+}
+
+.partner-tab {
+  border-radius: 999px;
+}
+
+.partner-tab.active,
+.partner-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--primary), var(--secondary) 62%, var(--accent));
+}
+
+.partner-panel div,
+.revenue-results div {
+  border-color: rgba(190, 255, 225, 0.14);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.revenue-results .featured-result {
+  border-color: rgba(89, 245, 168, 0.48);
+  background:
+    radial-gradient(circle at 84% 12%, rgba(89, 245, 168, 0.2), transparent 42%),
+    rgba(89, 245, 168, 0.1);
+}
+
+.revenue-list li::before {
+  box-shadow: 0 0 16px rgba(89, 245, 168, 0.42);
+}
+
+.closing-panel {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(89, 245, 168, 0.24), transparent 42%),
+    radial-gradient(circle at 88% 80%, rgba(37, 228, 211, 0.14), transparent 38%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+    rgba(7, 25, 20, 0.74);
+}
+
+@media (max-width: 560px) {
+  .revenue-hero-copy h1 {
+    font-size: clamp(3.2rem, 15vw, 4.4rem);
+  }
+
+  .partner-tab {
+    border-radius: var(--radius-md);
   }
 }

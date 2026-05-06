@@ -73,12 +73,14 @@
     const simulator = root.querySelector("[data-b2b-simulator]");
     if (!simulator) return;
 
-    const membersInput = simulator.querySelector("#partnerMembers");
+    const organizationsInput = simulator.querySelector("#partnerOrganizations");
+    const membersInput = simulator.querySelector("#membersPerPartner");
     const adoptionInput = simulator.querySelector("#adoptionRate");
-    const feeInput = simulator.querySelector("#licenseFee");
+    const licenseFeeInput = simulator.querySelector("#licenseFee");
+    const platformFeeInput = simulator.querySelector("#platformFee");
     const upsellInput = simulator.querySelector("#upsellRate");
-    const inputs = [membersInput, adoptionInput, feeInput, upsellInput].filter(Boolean);
-    if (inputs.length !== 4) return;
+    const inputs = [organizationsInput, membersInput, adoptionInput, licenseFeeInput, platformFeeInput, upsellInput].filter(Boolean);
+    if (inputs.length !== 6) return;
 
     function readNumber(input) {
       const value = Number.parseFloat(input.value);
@@ -86,23 +88,33 @@
     }
 
     function updateSimulator() {
-      const partnerMembers = readNumber(membersInput);
+      const partnerOrganizations = readNumber(organizationsInput);
+      const membersPerPartner = readNumber(membersInput);
       const adoptionRate = readNumber(adoptionInput);
-      const licenseFee = readNumber(feeInput);
+      const licenseFee = readNumber(licenseFeeInput);
+      const platformFee = readNumber(platformFeeInput);
       const upsellRate = readNumber(upsellInput);
 
-      const activeUsers = Math.round(partnerMembers * (adoptionRate / 100));
-      const monthlyRecurringRevenue = activeUsers * licenseFee;
-      const annualRecurringRevenue = monthlyRecurringRevenue * 12;
+      const totalPotentialMembers = Math.round(partnerOrganizations * membersPerPartner);
+      const activeUsers = Math.round(totalPotentialMembers * (adoptionRate / 100));
+      const monthlyLicenseRevenue = activeUsers * licenseFee;
+      const monthlyPlatformRevenue = partnerOrganizations * platformFee;
+      const totalMonthlyB2BRevenue = monthlyLicenseRevenue + monthlyPlatformRevenue;
+      const annualRecurringRevenue = totalMonthlyB2BRevenue * 12;
       const upsellRevenue = activeUsers * (upsellRate / 100) * licenseFee;
 
-      setText(simulator, '[data-output-for="partnerMembers"]', formatNumber(partnerMembers));
+      setText(simulator, '[data-output-for="partnerOrganizations"]', formatNumber(partnerOrganizations));
+      setText(simulator, '[data-output-for="membersPerPartner"]', formatNumber(membersPerPartner));
       setText(simulator, '[data-output-for="adoptionRate"]', `${formatNumber(adoptionRate)}%`);
       setText(simulator, '[data-output-for="licenseFee"]', formatFee(licenseFee));
+      setText(simulator, '[data-output-for="platformFee"]', formatCurrency(platformFee));
       setText(simulator, '[data-output-for="upsellRate"]', `${formatNumber(upsellRate)}%`);
 
+      setText(simulator, '[data-result="totalPotentialMembers"]', formatNumber(totalPotentialMembers));
       setText(simulator, '[data-result="activeUsers"]', formatNumber(activeUsers));
-      setText(simulator, '[data-result="mrr"]', formatCurrency(monthlyRecurringRevenue));
+      setText(simulator, '[data-result="monthlyLicenseRevenue"]', formatCurrency(monthlyLicenseRevenue));
+      setText(simulator, '[data-result="monthlyPlatformRevenue"]', formatCurrency(monthlyPlatformRevenue));
+      setText(simulator, '[data-result="totalMonthlyB2BRevenue"]', formatCurrency(totalMonthlyB2BRevenue));
       setText(simulator, '[data-result="arr"]', formatCurrency(annualRecurringRevenue));
       setText(simulator, '[data-result="upsellRevenue"]', formatCurrency(upsellRevenue));
     }

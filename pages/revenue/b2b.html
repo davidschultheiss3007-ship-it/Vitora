@@ -185,16 +185,25 @@
         <div class="section-heading left">
           <p class="eyebrow">Interactive Revenue Simulator</p>
           <h2 id="simulator-title">Model fictional partner revenue.</h2>
-          <p>Demo calculation based on simplified fictional assumptions.</p>
+          <p>The model becomes scalable because Vitora can serve multiple partner organizations at once, while each partner brings a group of potential users.</p>
+          <p>Demo calculation based on simplified fictional assumptions. Partner organizations are not individual users.</p>
         </div>
 
         <form class="b2b-simulator" data-b2b-simulator>
           <div class="revenue-inputs">
-            <label for="partnerMembers">
-              <span>Number of partner members</span>
-              <strong data-output-for="partnerMembers">2,500</strong>
+            <label for="partnerOrganizations">
+              <span>Number of partner organizations</span>
+              <strong data-output-for="partnerOrganizations">20</strong>
             </label>
-            <input id="partnerMembers" name="partnerMembers" type="range" min="100" max="20000" step="100" value="2500" data-simulator-input />
+            <input id="partnerOrganizations" name="partnerOrganizations" type="range" min="1" max="100" step="1" value="20" data-simulator-input />
+
+            <label for="membersPerPartner">
+              <span>Members per partner organization</span>
+              <strong data-output-for="membersPerPartner">2,500</strong>
+            </label>
+            <input id="membersPerPartner" name="membersPerPartner" type="range" min="100" max="20000" step="100" value="2500" data-simulator-input />
+
+            <p class="simulator-helper">Partner organizations are gyms, companies, universities or wellness partners. Members are the people inside those organizations.</p>
 
             <label for="adoptionRate">
               <span>Adoption rate in %</span>
@@ -208,6 +217,12 @@
             </label>
             <input id="licenseFee" name="licenseFee" type="range" min="1" max="15" step="0.25" value="4.50" data-simulator-input />
 
+            <label for="platformFee">
+              <span>Monthly platform fee per partner organization</span>
+              <strong data-output-for="platformFee">EUR 499</strong>
+            </label>
+            <input id="platformFee" name="platformFee" type="range" min="0" max="3000" step="50" value="499" data-simulator-input />
+
             <label for="upsellRate">
               <span>Premium upsell rate in %</span>
               <strong data-output-for="upsellRate">8%</strong>
@@ -217,20 +232,32 @@
 
           <div class="revenue-results" aria-live="polite">
             <div>
-              <span>Active Vitora users</span>
-              <strong data-result="activeUsers">875</strong>
+              <span>Total potential members</span>
+              <strong data-result="totalPotentialMembers">50,000</strong>
             </div>
             <div>
-              <span>Monthly recurring revenue</span>
-              <strong data-result="mrr">EUR 3,938</strong>
+              <span>Active Vitora users</span>
+              <strong data-result="activeUsers">17,500</strong>
+            </div>
+            <div>
+              <span>Monthly license revenue</span>
+              <strong data-result="monthlyLicenseRevenue">EUR 78,750</strong>
+            </div>
+            <div>
+              <span>Monthly platform fee revenue</span>
+              <strong data-result="monthlyPlatformRevenue">EUR 9,980</strong>
+            </div>
+            <div class="featured-result">
+              <span>Total monthly B2B revenue</span>
+              <strong data-result="totalMonthlyB2BRevenue">EUR 88,730</strong>
             </div>
             <div>
               <span>Annual recurring revenue</span>
-              <strong data-result="arr">EUR 47,250</strong>
+              <strong data-result="arr">EUR 1,064,760</strong>
             </div>
             <div>
               <span>Potential monthly premium upsell revenue</span>
-              <strong data-result="upsellRevenue">EUR 315</strong>
+              <strong data-result="upsellRevenue">EUR 6,300</strong>
             </div>
           </div>
         </form>
