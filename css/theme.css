@@ -1,24 +1,24 @@
 :root {
-  --bg: #050807;
-  --bg-soft: #081611;
-  --surface: rgba(255, 255, 255, 0.07);
-  --surface-strong: rgba(255, 255, 255, 0.11);
-  --glass: rgba(255, 255, 255, 0.08);
-  --glass-strong: rgba(255, 255, 255, 0.14);
+  --bg: #010504;
+  --bg-soft: #061712;
+  --surface: rgba(226, 255, 244, 0.065);
+  --surface-strong: rgba(226, 255, 244, 0.12);
+  --glass: rgba(8, 28, 23, 0.68);
+  --glass-strong: rgba(14, 46, 37, 0.78);
 
-  --text: #f4fff9;
-  --muted: #9db4a8;
-  --muted-strong: #ccddd5;
-  --line: rgba(255, 255, 255, 0.14);
+  --text: #f7fffb;
+  --muted: #9ab8ad;
+  --muted-strong: #d9ebe3;
+  --line: rgba(189, 255, 225, 0.16);
 
-  --primary: #54f2a7;
-  --primary-strong: #20d17b;
-  --secondary: #55d8ff;
-  --accent: #d9ff7c;
+  --primary: #57f5a6;
+  --primary-strong: #22de89;
+  --secondary: #28e3d2;
+  --accent: #b9ff6b;
   --danger: #ff7d8d;
 
-  --shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
-  --shadow-bright: 0 24px 70px rgba(84, 242, 167, 0.18);
+  --shadow: 0 34px 110px rgba(0, 0, 0, 0.62);
+  --shadow-bright: 0 22px 80px rgba(87, 245, 166, 0.28);
 
   --radius-xl: 8px;
   --radius-lg: 8px;
@@ -29,7 +29,8 @@
   --header-height: 76px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --panel-blur: 22px;
-  --ring: rgba(84, 242, 167, 0.36);
+  --ring: rgba(87, 245, 166, 0.36);
+  --halo: 0 0 28px rgba(87, 245, 166, 0.22), 0 0 86px rgba(40, 227, 210, 0.1);
 }
 
 html[data-theme="light"] {

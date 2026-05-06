@@ -63,11 +63,22 @@ const VitoraPresentation = (() => {
     return `
       <div class="cover-layout">
         <div class="cover-copy reveal">
-          <p class="eyebrow">${escapeHtml(slide.eyebrow)}</p>
-          <h1>${escapeHtml(slide.title)}</h1>
-          <p class="tagline">${escapeHtml(slide.tagline)}</p>
+          <p class="eyebrow hero-pill">The future of healthy living</p>
+          <h1 class="hero-title">
+            <span>Your health.</span>
+            <span>Your habits.</span>
+            <span>Your future.</span>
+          </h1>
           <p class="lead">${escapeHtml(slide.subtitle)}</p>
-          <div class="presenter-line">${escapeHtml(slide.speaker)}</div>
+          <div class="hero-actions">
+            <a class="primary-button" href="#slide-06">Try the Demo <span aria-hidden="true">&#8594;</span></a>
+            <a class="secondary-button" href="#slide-09">How it works</a>
+          </div>
+          <div class="hero-stats" aria-label="Vitora product metrics">
+            <div><strong>87%</strong><span>Health Score</span></div>
+            <div><strong>8,421</strong><span>Steps today</span></div>
+            <div><strong>1,840</strong><span>Calories burned</span></div>
+          </div>
         </div>
         <div class="hero-visual app-preview reveal delay-1" data-app-preview>
           <div class="orbit-ring" aria-hidden="true"></div>
@@ -121,6 +132,37 @@ const VitoraPresentation = (() => {
             </div>
           </div>
         </div>
+      </div>
+      <div class="cover-feature-intro reveal delay-2">
+        <h2>All-in-one. All for you.</h2>
+        <p>Vitora combines health tracking, AI coaching and rewarding experiences in one simple app.</p>
+      </div>
+      <div class="cover-feature-strip reveal delay-2" aria-label="Vitora product pillars">
+        <article>
+          <span aria-hidden="true">+</span>
+          <strong>Track</strong>
+          <p>Activity, nutrition and sleep in one calm view.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">AI</span>
+          <strong>Understand</strong>
+          <p>Personal insights that explain what matters next.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">&#9673;</span>
+          <strong>Improve</strong>
+          <p>Plans that adapt to real routines and energy.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">$</span>
+          <strong>Get rewarded</strong>
+          <p>Motivation loops for sustainable healthy choices.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">&#8756;</span>
+          <strong>Connect</strong>
+          <p>A supportive ecosystem around everyday wellbeing.</p>
+        </article>
       </div>
     `;
   }
