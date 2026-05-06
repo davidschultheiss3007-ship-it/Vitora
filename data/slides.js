@@ -9,357 +9,567 @@ window.VitoraSlides = [
     id: "slide-01",
     title: "Vitora",
     section: "Opening",
-    speaker: "Presented by [Your Name] / [Teammate 2] / [Teammate 3]",
+    speaker: "Presentation team",
     image: null,
     notes: null,
     duration: "1 min",
-    transitionText: "Corporate Communication Project",
+    transitionText: "From a product idea to a complete company",
     layout: "cover",
     eyebrow: "HDBW Business English | SoSe 2026",
-    kicker: "VITORA | CONFIDENTIAL",
-    tagline: "Train. Eat. Breathe.",
-    subtitle: "Corporate Communication Project",
+    kicker: "VITORA | CORPORATE PRESENTATION",
+    tagline: "Build healthier habits, sustainably.",
+    subtitle: "A fictional digital health and nutrition company for sustainable weight management.",
     footer: "HDBW Business English | SoSe 2026"
   },
   {
     id: "slide-02",
-    title: "About Vitora",
-    section: "01 | The Company",
-    speaker: "CFO [Your Name]",
+    title: "The Problem: Why Sustainable Weight Management Matters",
+    section: "01 | Problem",
+    speaker: "CCO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "From the company profile to the brand promise",
-    layout: "company",
-    intro:
-      "Vitora GmbH is a Munich-based health-tech company. We build Vitora, the all-in-one wellness app that brings personalised training, nutrition tracking and mental health into one science-backed daily companion.",
-    body:
-      "Founded in 2022, we have grown into a team of 80+ specialists across product, engineering, sport science, nutrition and clinical psychology, united by one belief: body and mind should be supported as one connected system.",
-    metrics: [
-      { value: "2022", label: "Year founded" },
-      { value: "80+", label: "Employees" },
-      { value: "1.2 M", label: "App downloads" },
-      { value: "14", label: "EU markets" }
-    ],
     notes:
-      "Our product: Vitora - one app, three pillars. Smart workout plans, food and macro tracking, plus mindfulness, sleep and mood coaching. Available on iOS and Android."
+      "This slide introduces the communication challenge without using external market statistics.",
+    duration: "4 min",
+    transitionText: "The problem explains why Vitora exists",
+    layout: "problem",
+    intro:
+      "Many people want to improve their eating habits, but conventional diet communication often feels restrictive, confusing or unrealistic.",
+    challenge:
+      "Vitora responds with a supportive company model that treats weight management as a long-term habit journey, not a short-term crash diet.",
+    points: [
+      {
+        title: "Overcomplicated guidance",
+        text: "Users are often confronted with too many rules, apps and contradictory recommendations."
+      },
+      {
+        title: "Unsustainable routines",
+        text: "Extreme plans may create short motivation peaks but rarely fit everyday student or working life."
+      },
+      {
+        title: "Sensitive communication",
+        text: "Health brands must avoid shame-based messaging and communicate responsibly about body image."
+      }
+    ]
   },
   {
     id: "slide-03",
-    title: "Logo & Unique Selling Proposition",
-    section: "02 | Brand Foundations",
-    speaker: "CFO [Your Name]",
+    title: "Company Profile",
+    section: "02 | Company Profile",
+    speaker: "CCO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "The promise becomes a purpose system",
-    layout: "brand",
-    tagline: "Train. Eat. Breathe.",
-    usp: "The first wellness app that treats body and mind as one connected system.",
-    pillars: [
+    notes:
+      "Vitora is presented as a company with 65 employees, not only as an app demo.",
+    duration: "4 min",
+    transitionText: "The profile leads into purpose and values",
+    layout: "company",
+    intro:
+      "Vitora is a digital health and nutrition company helping people build sustainable weight-loss habits through personalized coaching, progress tracking and AI-supported recommendations.",
+    body:
+      "The company combines lifestyle technology, human nutrition expertise and responsible corporate communication to create a trustworthy digital companion for everyday wellbeing.",
+    metrics: [
+      { value: "65", label: "Employees" },
+      { value: "2026", label: "Founded" },
+      { value: "Munich", label: "Headquarters" },
+      { value: "AI + Coaching", label: "Core service" }
+    ],
+    profile: [
+      { label: "Industry", value: "Digital Health / Nutrition / Lifestyle Technology" },
+      { label: "Core service", value: "AI-supported nutrition and habit coaching" },
       {
-        title: "Move",
-        text: "Personalised training plans for every level and goal."
+        label: "Target customers",
+        value: "Busy students, young professionals and health-conscious adults"
       },
       {
-        title: "Fuel",
-        text: "Nutrition tracking with smart meal and macro insights."
-      },
-      {
-        title: "Mind",
-        text: "Mindfulness, sleep coaching and mood tracking."
+        label: "Headquarters reason",
+        value:
+          "Munich offers access to technology talent, healthcare innovation, universities, investors and a health-conscious target market."
       }
     ]
   },
   {
     id: "slide-04",
-    title: "Mission | Vision | Values",
+    title: "Mission, Vision and Corporate Values",
     section: "03 | Purpose",
-    speaker: "CFO [Your Name]",
+    speaker: "CCO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "The purpose is anchored in a physical place",
+    notes:
+      "Mission, vision and values are separated clearly because they have different communication roles.",
+    duration: "4 min",
+    transitionText: "Purpose becomes visible through positioning",
     layout: "purpose",
     statements: [
       {
         label: "Mission",
-        title: "Our Mission",
+        title: "Mission Statement",
         text:
-          "To make holistic wellness accessible, personalised and science-backed for everyone, turning healthy habits into a simple part of daily life."
+          "To help people build healthier eating habits through accessible, personalized and sustainable digital coaching."
       },
       {
         label: "Vision",
-        title: "Our Vision",
+        title: "Vision Statement",
         text:
-          "To become Europe's most trusted everyday wellness companion by 2030, the first app people open in the morning and the last one at night."
-      },
-      {
-        label: "Values",
-        title: "Core Values",
-        text:
-          "Whole-person wellness | Science over hype | Privacy by design | Inclusion at every step."
+          "To become Europe's most trusted digital companion for sustainable weight management and everyday wellbeing."
       }
     ],
-    notes:
-      "Our purpose statements set the standards by which every feature, partnership and hire is judged."
-  },
-  {
-    id: "slide-05",
-    title: "Headquarters | Munich, Germany",
-    section: "04 | Location",
-    speaker: "CFO [Your Name]",
-    image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "Munich gives Vitora access to a fast-growing market",
-    layout: "location",
-    place: "Munich",
-    region: "Bavaria | Germany",
-    facts: [
-      { value: "48\u00b0 8\u2032 N | 11\u00b0 34\u2032 E", label: "Coordinates" },
-      { value: "1.5 M", label: "Population" },
-      { value: "DE", label: "Country" }
-    ],
-    reasons: [
+    values: [
       {
-        title: "Tech & talent hub",
-        text:
-          "TUM, LMU and HDBW feed Munich's strong software and digital-health talent pool."
+        title: "Responsibility",
+        text: "We promote healthy, realistic and non-harmful weight-loss methods."
       },
       {
-        title: "Health-tech cluster",
-        text:
-          "Bavaria is Germany's leading region for med-tech, digital health and life sciences."
+        title: "Transparency",
+        text: "We explain how recommendations are created and how user data is used."
       },
       {
-        title: "European reach",
-        text:
-          "Central location and major airport support fast rollout to all 14 EU markets."
+        title: "Sustainability",
+        text: "We encourage balanced choices that are healthy for people and better for the planet."
       },
       {
-        title: "Lifestyle fit",
-        text:
-          "Alpine outdoor culture matches our brand DNA and helps us attract top talent."
+        title: "Empathy",
+        text: "We avoid shame-based dieting and support users with realistic progress."
+      },
+      {
+        title: "Innovation",
+        text: "We use technology to make health guidance easier and more personal."
       }
     ]
   },
   {
-    id: "slide-06",
-    title: "Our Market & Customer",
-    section: "05 | Market",
-    speaker: "CMO [Teammate 2]",
+    id: "slide-05",
+    title: "Target Market",
+    section: "04 | Target Market",
+    speaker: "CMO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "The market opportunity shapes the go-to-market strategy",
+    notes:
+      "The target market is defined by needs and lifestyles, without invented external statistics.",
+    duration: "4 min",
+    transitionText: "The target market shapes the USP",
     layout: "market",
     metrics: [
-      { value: "\u20ac8.4 B", label: "European mobile wellness app market (2025)" },
-      { value: "+14%", label: "Annual category growth (CAGR 2024-2029)" },
-      { value: "71%", label: "Of EU adults now use a wellness or fitness app" }
+      { value: "Students", label: "Affordable, flexible guidance" },
+      { value: "Young professionals", label: "Simple routines for busy weeks" },
+      { value: "Health-conscious adults", label: "Long-term wellbeing habits" }
     ],
-    personaTitle: "The mindful urban professional",
+    personaTitle: "The busy habit builder",
     persona: [
-      "25-40 years, urban, smartphone-native",
-      "Cares about both physical and mental health",
-      "Already pays for at least one health subscription",
-      "Wants one app, not five, for daily wellbeing"
+      "Wants realistic weight-management support without crash diets",
+      "Needs simple nutrition guidance that fits university or work routines",
+      "Prefers positive feedback and visible progress over pressure",
+      "Cares about privacy, transparency and credible health communication"
     ],
-    notes: "EU mobile wellness app market (\u20ac B)"
+    signalLabel: "Primary target customers",
+    signalValue: "3 groups"
+  },
+  {
+    id: "slide-06",
+    title: "USP and Positioning",
+    section: "05 | USP",
+    speaker: "CMO",
+    image: null,
+    notes:
+      "The USP distinguishes Vitora from restrictive dieting products by combining technology, human expertise and realistic routines.",
+    duration: "4 min",
+    transitionText: "The positioning becomes a corporate identity",
+    layout: "brand",
+    tagline: "Supportive. Personal. Sustainable.",
+    usp:
+      "Vitora combines AI-supported habit tracking with human nutrition expertise to help users lose weight sustainably without crash diets, calorie obsession or unrealistic routines.",
+    pillars: [
+      {
+        title: "AI-supported habits",
+        text: "Progress tracking turns everyday actions into practical recommendations."
+      },
+      {
+        title: "Human expertise",
+        text: "Certified nutrition coaches keep the guidance realistic, responsible and understandable."
+      },
+      {
+        title: "Sustainable routines",
+        text: "The product supports small, repeatable choices instead of extreme short-term plans."
+      }
+    ]
   },
   {
     id: "slide-07",
-    title: "How We Win",
-    section: "06 | Strategy",
-    speaker: "CMO [Teammate 2]",
+    title: "Corporate Identity and Desired Image",
+    section: "06 | Corporate Communication",
+    speaker: "CMO / CCO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "Strategy then becomes visible through identity and image",
-    layout: "strategy",
-    subtitle: "Four Strategic Pillars",
-    pillars: [
+    notes:
+      "This slide uses the required corporate communication concepts directly.",
+    duration: "4 min",
+    transitionText: "The identity needs an integrated communication strategy",
+    layout: "identity",
+    essence: "Modern, supportive, science-based, trustworthy and non-judgmental.",
+    essenceNote: "This is the Corporate Identity Vitora wants every stakeholder to recognize.",
+    columns: [
       {
-        number: "01",
-        title: "Premium freemium",
-        text:
-          "A generous free tier brings users in; Vitora+ unlocks advanced personalisation, premium content and full progress analytics for \u20ac9.99/month."
+        kicker: "Corporate Identity",
+        title: "What Vitora communicates",
+        text: "Modern, supportive, science-based, trustworthy and non-judgmental.",
+        items: [
+          "Clear brand voice",
+          "Responsible health language",
+          "Consistent digital health design"
+        ]
       },
       {
-        number: "02",
-        title: "B2B corporate wellness",
+        kicker: "Corporate Image",
+        title: "How users should see Vitora",
         text:
-          "We sell company-wide Vitora+ access to HR teams as part of their employee benefits programme, creating a stable, high-margin recurring revenue stream."
+          "Users should see Vitora as a reliable and motivating health companion, not as another restrictive diet app.",
+        items: [
+          "Helpful rather than controlling",
+          "Motivating rather than shame-based",
+          "Practical rather than unrealistic"
+        ]
       },
       {
-        number: "03",
-        title: "AI-driven personalisation",
+        kicker: "Reputation Goal",
+        title: "What Vitora wants to be known for",
         text:
-          "Our AI coach adapts every workout, meal plan and mindfulness session to the user's goals, sleep, mood and progress, powered by clinically validated data."
-      },
-      {
-        number: "04",
-        title: "Content & community",
-        text:
-          "Coaches, nutritionists and psychologists publish on Vitora and our podcast, building authority, organic reach and a community users want to belong to."
+          "Vitora wants to build a reputation for sustainable, ethical and realistic weight management.",
+        items: [
+          "Ethical recommendations",
+          "Transparent data use",
+          "Long-term wellbeing"
+        ]
       }
     ]
   },
   {
     id: "slide-08",
-    title: "Corporate Identity & Image",
-    section: "07 | Brand",
-    speaker: "CMO [Teammate 2]",
+    title: "Communication Strategy",
+    section: "07 | Communication Strategy",
+    speaker: "CMO / CCO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "A clear brand system supports stakeholder relationships",
-    layout: "identity",
-    essence: "Train. Eat. Breathe.",
-    essenceNote: "Our brand essence: the single idea behind every screen, message and feature.",
-    columns: [
+    notes:
+      "The communication strategy coordinates all touchpoints around one consistent identity.",
+    duration: "4 min",
+    transitionText: "Communication connects the brand to the service experience",
+    layout: "communication",
+    channelTitle: "Channels and purposes",
+    channels: [
+      { title: "Instagram and TikTok", text: "Awareness and educational short-form content" },
+      { title: "App notifications", text: "Motivation and habit reminders" },
+      { title: "Blog and newsletter", text: "Nutrition education and trust-building" },
+      { title: "Corporate website", text: "Transparency, credibility and conversion" },
       {
-        kicker: "What we say",
-        title: "Corporate Identity",
-        text: "The profile and values we communicate.",
-        items: [
-          "Warm | scientific | modern | inclusive",
-          "Visual: forest green, lime, cream",
-          "Voice: encouraging, evidence-based, calm"
-        ]
-      },
-      {
-        kicker: "What they see",
-        title: "Corporate Image",
-        text: "How users and stakeholders perceive us today.",
-        items: [
-          "\"Finally one app that does it all.\"",
-          "App Store rating: 4.7 / 5 (28 k reviews)",
-          "Brand awareness in DACH 25-40 segment: 22%"
-        ]
+        title: "Partnerships",
+        text: "Universities, gyms, health insurers and corporate wellness programs"
       }
+    ],
+    tone: ["Encouraging", "Clear", "Non-judgmental", "Evidence-based", "Positive"],
+    integration:
+      "Vitora coordinates all communication channels to present one consistent identity: supportive, transparent and sustainable digital health guidance.",
+    integrationPoints: [
+      "One shared tone of voice",
+      "Aligned visual identity",
+      "Integrated messages across owned, social and partner channels"
     ]
   },
   {
     id: "slide-09",
-    title: "Our Stakeholders",
-    section: "08 | Relationships",
-    speaker: "CCO [Teammate 3]",
+    title: "How Vitora Works",
+    section: "08 | Service Model",
+    speaker: "COO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "Stakeholder expectations lead into responsibility",
-    layout: "stakeholders",
-    definition:
-      "Stakeholder: any group or individual who can affect, or is affected by, the achievement of our objectives.",
-    groups: [
+    notes:
+      "The service model explains the product without making the whole presentation feel like only an app demo.",
+    duration: "4 min",
+    transitionText: "The service model becomes a user journey",
+    layout: "service",
+    intro:
+      "Vitora offers AI-supported nutrition and habit coaching through a digital platform supported by human expertise.",
+    steps: [
       {
-        label: "Internal",
-        title: "Inside Vitora",
-        items: [
-          { title: "Employees", text: "80+ specialists across 6 functions" },
-          { title: "Investors & founders", text: "Series A backers, family office capital" }
-        ]
+        number: "01",
+        title: "Assess",
+        text: "Users define goals, habits, lifestyle limits and preferred coaching intensity."
       },
       {
-        label: "External",
-        title: "Outside Vitora",
-        items: [
-          { title: "App users", text: "1.2 M downloads | 280 k monthly active" },
-          { title: "B2B corporate clients", text: "HR teams buying employee wellness access" },
-          { title: "App platforms", text: "Apple App Store | Google Play" },
-          { title: "Regulators", text: "GDPR, EU AI Act, EU Health Data Space" },
-          { title: "Coaches & experts", text: "Trainers, nutritionists, psychologists" },
-          { title: "Media & public", text: "Tech press, lifestyle media, society" }
-        ]
+        number: "02",
+        title: "Recommend",
+        text: "The AI coach suggests realistic nutrition and habit actions for the next week."
+      },
+      {
+        number: "03",
+        title: "Support",
+        text: "Certified nutrition experts review sensitive guidance and improve user trust."
+      },
+      {
+        number: "04",
+        title: "Track",
+        text: "Progress data turns into motivating feedback, not pressure or shame."
       }
     ]
   },
   {
     id: "slide-10",
-    title: "CSR & Sustainability",
-    section: "09 | Responsibility",
-    speaker: "CCO [Teammate 3]",
+    title: "User Journey",
+    section: "09 | User Journey",
+    speaker: "COO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "Responsibility has to be communicated consistently",
-    layout: "responsibility",
-    commitments: [
-      { value: "100%", label: "Carbon-neutral cloud infrastructure" },
-      { value: "Free", label: "Mental-health basics, available to everyone" },
-      { value: "1%", label: "Of revenue donated to mental-health charities" }
-    ],
-    lanes: [
+    notes:
+      "The journey shows how Vitora creates repeatable value across the customer experience.",
+    duration: "4 min",
+    transitionText: "The journey depends on partners and operations",
+    layout: "journey",
+    stages: [
       {
-        label: "Environmental",
-        title: "Planet",
-        items: [
-          "100% renewable-energy cloud hosting",
-          "Hardware refurbishment programme",
-          "Paperless, low-travel office culture"
-        ]
+        title: "Discover",
+        text: "A user finds Vitora through educational content, university partnerships or the website."
       },
       {
-        label: "Social",
-        title: "People",
-        items: [
-          "12 languages | accessibility-first design",
-          "Free mental-health tier for everyone",
-          "Vitora Foundation supports youth wellbeing"
-        ]
+        title: "Onboard",
+        text: "Vitora asks about goals, routines, restrictions and communication preferences."
       },
       {
-        label: "Governance",
-        title: "Trust",
-        items: [
-          "GDPR-by-design; we never sell user data",
-          "Transparent, explainable AI principles",
-          "Annual independent data & ethics audit"
-        ]
+        title: "Build habits",
+        text: "The user receives weekly nutrition and habit goals that fit real life."
+      },
+      {
+        title: "Reflect",
+        text: "Progress is reviewed through supportive feedback and clear next steps."
+      },
+      {
+        title: "Stay engaged",
+        text: "Helpful reminders, coach input and transparent progress keep the routine sustainable."
       }
     ]
   },
   {
     id: "slide-11",
-    title: "Communication & Integration",
-    section: "10 | Communication",
-    speaker: "CCO [Teammate 3]",
+    title: "Management Roles, Partners and Operations",
+    section: "10 | Operations",
+    speaker: "COO",
     image: null,
-    notes: null,
-    duration: "2 min",
-    transitionText: "The story closes with one integrated brand voice",
-    layout: "communication",
-    channelTitle: "Six channels, one consistent voice",
-    channels: [
-      { title: "In-app messaging", text: "Push, in-app news, feature spotlights" },
-      { title: "Social media", text: "Instagram | TikTok | LinkedIn" },
-      { title: "Owned content", text: "Podcast, blog, science-backed articles" },
-      { title: "PR & media", text: "Tech press, health & lifestyle media" },
-      { title: "B2B & events", text: "HR fairs, partner summits, webinars" },
-      { title: "Reporting", text: "ESG report, transparency report" }
+    notes:
+      "This slide makes the required CFO, COO, CMO and CCO roles visible and connects them to operations.",
+    duration: "4 min",
+    transitionText: "Operations define who affects and is affected by Vitora",
+    layout: "operations",
+    roles: [
+      {
+        title: "CCO - Chief Communications Officer",
+        text: "Corporate identity, mission, vision, values and reputation"
+      },
+      {
+        title: "CMO - Chief Marketing Officer",
+        text: "Market, target group, positioning, branding and communication channels"
+      },
+      {
+        title: "COO - Chief Operating Officer",
+        text: "Service model, user journey, partners and operational process"
+      },
+      {
+        title: "CFO - Chief Financial Officer",
+        text: "Revenue model, pricing, financial outlook and growth strategy"
+      }
     ],
-    integration:
-      "We coordinate every channel, from a TikTok video to an investor report, so that our identity is consistently and effectively communicated to every stakeholder group.",
-    integrationPoints: [
-      "Consistent visual identity",
-      "Aligned messaging architecture",
-      "Shared brand-voice guidelines"
+    partners: [
+      "Certified nutrition experts",
+      "Universities and student services",
+      "Gyms and corporate wellness teams",
+      "Healthcare and privacy advisors",
+      "App stores and platform providers"
+    ],
+    process: [
+      "Product team improves tracking and personalization",
+      "Coaches review nutrition guidance and sensitive communication",
+      "Communication team keeps brand messages consistent",
+      "Finance team evaluates sustainable growth options"
     ]
   },
   {
     id: "slide-12",
-    title: "Thank You",
+    title: "Stakeholder Map",
+    section: "11 | Stakeholders",
+    speaker: "COO / CCO",
+    image: null,
+    notes:
+      "The map separates internal and external stakeholders for a clearer corporate view.",
+    duration: "4 min",
+    transitionText: "Stakeholder expectations lead into the revenue model",
+    layout: "stakeholders",
+    definition:
+      "Vitora's stakeholders include everyone who affects or is affected by the company's mission, product decisions and communication.",
+    groups: [
+      {
+        label: "Internal stakeholders",
+        title: "Inside Vitora",
+        items: [
+          { title: "Employees", text: "65 employees across product, coaching and business teams" },
+          { title: "Nutrition coaches", text: "Experts supporting responsible guidance" },
+          { title: "Product and data teams", text: "Teams building tracking, privacy and personalization" },
+          { title: "Management", text: "CFO, COO, CMO and CCO coordinating strategy" }
+        ]
+      },
+      {
+        label: "External stakeholders",
+        title: "Outside Vitora",
+        items: [
+          { title: "Users", text: "People using Vitora for sustainable weight management" },
+          { title: "Healthcare partners", text: "Organizations supporting credible guidance" },
+          { title: "Investors", text: "Financial supporters of responsible growth" },
+          { title: "App stores and platform providers", text: "Distribution and platform partners" },
+          {
+            title: "Universities and corporate wellness partners",
+            text: "Institutional partners for access and education"
+          },
+          {
+            title: "Regulators and data protection authorities",
+            text: "Public bodies responsible for privacy and compliance"
+          },
+          {
+            title: "Society and public health community",
+            text: "Groups affected by health communication and wellbeing outcomes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "slide-13",
+    title: "Revenue Model",
+    section: "12 | Revenue Model",
+    speaker: "CFO",
+    image: null,
+    notes:
+      "The revenue model is fictional and company-internal; it avoids external market claims.",
+    duration: "4 min",
+    transitionText: "The revenue model supports the growth strategy",
+    layout: "revenue",
+    models: [
+      {
+        title: "Free access",
+        price: "0 EUR",
+        items: ["Basic habit tracking", "Introductory nutrition tips", "Educational content"]
+      },
+      {
+        title: "Vitora Plus",
+        price: "9.99 EUR",
+        items: ["Advanced AI recommendations", "Progress analytics", "Coach-supported guidance"]
+      },
+      {
+        title: "Partner plans",
+        price: "B2B",
+        items: ["University wellness access", "Corporate wellness packages", "Partner reporting"]
+      }
+    ],
+    assumptions: [
+      "Student pricing keeps the service accessible",
+      "Subscription revenue funds product and coach quality",
+      "B2B partnerships support stable long-term growth"
+    ]
+  },
+  {
+    id: "slide-14",
+    title: "Growth Strategy",
+    section: "13 | Growth Strategy",
+    speaker: "CFO",
+    image: null,
+    notes:
+      "The growth strategy focuses on plausible internal priorities instead of external statistics.",
+    duration: "4 min",
+    transitionText: "Growth must stay responsible",
+    layout: "strategy",
+    subtitle: "Four priorities for responsible scaling",
+    pillars: [
+      {
+        number: "01",
+        title: "University launch",
+        text:
+          "Start with students through campus partnerships, accessible pricing and educational communication."
+      },
+      {
+        number: "02",
+        title: "Coach quality",
+        text:
+          "Build a strong network of certified nutrition experts before expanding the service too quickly."
+      },
+      {
+        number: "03",
+        title: "Product trust",
+        text:
+          "Improve transparency, privacy explanations and AI recommendation clarity in every release."
+      },
+      {
+        number: "04",
+        title: "Partner growth",
+        text:
+          "Scale through gyms, health insurers and corporate wellness programs that match Vitora's values."
+      }
+    ],
+    includeCalculator: false,
+    includeRoadmap: false
+  },
+  {
+    id: "slide-15",
+    title: "CSR and Sustainability",
+    section: "14 | CSR and Sustainability",
+    speaker: "CFO / CCO",
+    image: null,
+    notes:
+      "CSR matters because Vitora communicates about health, data and body image.",
+    duration: "4 min",
+    transitionText: "CSR explains why Vitora is future-proof",
+    layout: "responsibility",
+    statement:
+      "Vitora's CSR strategy focuses on responsible health communication, ethical data use and sustainable nutrition habits.",
+    commitments: [
+      { value: "No", label: "Promotion of extreme dieting" },
+      { value: "Clear", label: "Explanations of AI-supported recommendations" },
+      { value: "Fair", label: "Affordable student pricing" }
+    ],
+    lanes: [
+      {
+        label: "Responsible health communication",
+        title: "People",
+        items: [
+          "No body-shaming communication",
+          "No promotion of extreme dieting",
+          "Cooperation with certified nutrition experts"
+        ]
+      },
+      {
+        label: "Ethical data use",
+        title: "Trust",
+        items: [
+          "Transparent data privacy policy",
+          "Clear explanations of AI-supported recommendations",
+          "Privacy-aware product and data teams"
+        ]
+      },
+      {
+        label: "Sustainable nutrition",
+        title: "Planet",
+        items: [
+          "Sustainable food recommendations",
+          "Balanced choices that are healthy for people and better for the planet",
+          "Digital-first model reducing printed material and physical infrastructure"
+        ]
+      }
+    ]
+  },
+  {
+    id: "slide-16",
+    title: "Conclusion: Why Vitora is Future-Proof",
     section: "Closing",
     speaker: "Full presentation team",
     image: null,
     notes: null,
     duration: "1 min",
     transitionText: null,
-    layout: "thanks",
-    subtitle: "Questions & Discussion",
-    tagline: "Train. Eat. Breathe.",
+    layout: "conclusion",
+    subtitle: "Vitora combines a clear company profile, responsible communication and a sustainable service model.",
+    takeaways: [
+      "65 employees and a clear management structure",
+      "A defined digital health and nutrition service",
+      "Strong USP, mission, vision and Corporate Values",
+      "Visible stakeholders, CSR, Sustainability and Communication Strategy"
+    ],
+    tagline: "Build healthier habits, sustainably.",
     footer: "HDBW Business English | SoSe 2026"
   }
 ];

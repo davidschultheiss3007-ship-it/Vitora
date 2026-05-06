@@ -25,36 +25,36 @@ const VitoraInteractions = (() => {
   const appPreviewModes = {
     move: {
       score: 87,
-      label: "Training ready",
+      label: "Habits aligned",
       stack: [
-        ["Workout", "Push Day"],
-        ["Next set", "Bench 4 x 8"],
-        ["Recovery", "Ready"]
+        ["Goal", "3 balanced meals"],
+        ["Habit", "Evening walk"],
+        ["Progress", "On track"]
       ],
       coach:
-        "Start with bench press, keep two reps in reserve and finish with a short mobility cooldown."
+        "Keep today's plan simple: prepare one balanced meal and log how it supports your energy."
     },
     fuel: {
       score: 74,
-      label: "Protein gap",
+      label: "Dinner focus",
       stack: [
-        ["Calories", "1,860 / 2,300"],
-        ["Protein", "+24g needed"],
-        ["Hydration", "1.8L logged"]
+        ["Breakfast", "Logged"],
+        ["Lunch", "Balanced plate"],
+        ["Dinner", "Plan needed"]
       ],
       coach:
-        "Add a high-protein dinner with fiber and water before increasing tomorrow's training load."
+        "Add a protein-rich, vegetable-based dinner and avoid turning the day into a calorie calculation."
     },
     mind: {
       score: 91,
-      label: "Recovery strong",
+      label: "Reflection strong",
       stack: [
-        ["Sleep", "7h 40m"],
-        ["Mood", "Calm"],
-        ["Breathwork", "6 min streak"]
+        ["Mood", "Positive"],
+        ["Energy", "Stable"],
+        ["Check-in", "2 min streak"]
       ],
       coach:
-        "Keep the evening light, repeat the breathing session and protect your current sleep rhythm."
+        "Use the evening check-in to notice what worked today and choose one realistic step for tomorrow."
     }
   };
 
@@ -296,21 +296,21 @@ const VitoraInteractions = (() => {
     const areas = [
       {
         value: training,
-        strong: "Training is the lowest signal, but still solid. Keep progression controlled and protect recovery.",
-        medium: "Training consistency is the weakest signal. Start with a shorter workout and rebuild momentum.",
-        low: "Training needs structure first. Choose one achievable session today before adding intensity."
+        strong: "Habit consistency is the lowest signal, but still solid. Keep the next action small and repeatable.",
+        medium: "Habit consistency is the weakest signal. Choose one realistic routine before adding another goal.",
+        low: "Habits need structure first. Pick one achievable action today and make it easy to repeat."
       },
       {
         value: nutrition,
-        strong: "Nutrition is the lowest signal, but the day is still aligned. Add one protein-rich meal to lock it in.",
-        medium: "Nutrition is limiting progress. Increase protein and plan one simple high-quality meal today.",
+        strong: "Nutrition is the lowest signal, but the day is still aligned. Add one balanced meal to lock it in.",
+        medium: "Nutrition is limiting progress. Plan one simple, high-quality meal today.",
         low: "Nutrition needs attention first. Build the next meal around protein, fiber and hydration."
       },
       {
         value: mood,
-        strong: "Mental wellbeing is the lowest signal, but still stable. Keep tomorrow's intensity moderate.",
-        medium: "Mental wellbeing needs attention. Reduce intensity slightly and prioritize recovery before pushing harder.",
-        low: "Recovery should lead today. Use a lighter session, sleep routine and a short mood check-in."
+        strong: "Coaching reflection is the lowest signal, but still stable. End the day with one honest check-in.",
+        medium: "Reflection needs attention. Reduce pressure and focus on what made the habit easier or harder.",
+        low: "Support should lead today. Use one kind check-in and choose a lighter next step."
       }
     ];
     const weakest = areas.reduce((lowest, area) => (area.value < lowest.value ? area : lowest), areas[0]);
