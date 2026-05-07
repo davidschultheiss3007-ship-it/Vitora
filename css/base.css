@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 2.75rem);
   min-width: 320px;
   color-scheme: dark;
 }
@@ -97,7 +98,7 @@ p {
 h1 {
   margin-bottom: 24px;
   font-size: 5.6rem;
-  line-height: 0.95;
+  line-height: 1;
   letter-spacing: 0;
   text-wrap: balance;
   text-shadow: 0 0 34px rgba(87, 245, 166, 0.12);
@@ -106,7 +107,7 @@ h1 {
 h2 {
   margin-bottom: 18px;
   font-size: 4rem;
-  line-height: 1;
+  line-height: 1.06;
   letter-spacing: 0;
   text-wrap: balance;
 }
@@ -114,13 +115,15 @@ h2 {
 h3 {
   margin-bottom: 12px;
   font-size: 1.7rem;
-  line-height: 1.05;
+  line-height: 1.14;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 p {
   color: var(--muted);
   line-height: 1.72;
+  overflow-wrap: break-word;
 }
 
 table {
@@ -131,7 +134,7 @@ table {
 
 th,
 td {
-  padding: 16px 14px;
+  padding: 18px 16px;
   border-bottom: 1px solid var(--line);
   text-align: center;
   white-space: nowrap;
