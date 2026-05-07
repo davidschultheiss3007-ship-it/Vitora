@@ -23,7 +23,7 @@ const VitoraPresentation = (() => {
 
     return `
       <figure class="slide-image-frame">
-        <img src="${escapeHtml(slide.image)}" alt="${escapeHtml(slide.title)}" loading="lazy" />
+        <img src="${escapeHtml(slide.image)}" alt="${escapeHtml(slide.title)}" loading="lazy" decoding="async" />
       </figure>
     `;
   }

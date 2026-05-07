@@ -3,8 +3,24 @@ const VitoraNavigation = (() => {
   let navLinks = [];
 
   const state = {
-    activeIndex: 0
+    activeIndex: 0,
+    scrollTicking: false,
+    resizeTicking: false,
+    usingSectionObserver: false,
+    initialized: false
   };
+
+  const passiveListener = { passive: true };
+
+  function runOnNextFrame(key, callback) {
+    if (state[key]) return;
+
+    state[key] = true;
+    requestAnimationFrame(() => {
+      state[key] = false;
+      callback();
+    });
+  }
 
   function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -59,21 +75,21 @@ const VitoraNavigation = (() => {
   function updateProgress() {
     const progressBar = document.getElementById("scrollProgress");
     const siteHeader = document.getElementById("siteHeader");
-
+    const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+    const progress = scrollableHeight > 0 ? (scrollY / scrollableHeight) * 100 : 0;
 
     if (progressBar) {
-      progressBar.style.width = `${progress}%`;
+      progressBar.style.transform = `scaleX(${Math.min(Math.max(progress / 100, 0), 1)})`;
     }
 
-    const isCompact = window.scrollY > 24;
+    const isCompact = scrollY > 24;
 
-    if (siteHeader) {
+    if (siteHeader && siteHeader.classList.contains("compact") !== isCompact) {
       siteHeader.classList.toggle("compact", isCompact);
     }
 
-    if (document.body) {
+    if (document.body && document.body.classList.contains("is-scrolled") !== isCompact) {
       document.body.classList.toggle("is-scrolled", isCompact);
     }
   }
@@ -111,16 +127,20 @@ const VitoraNavigation = (() => {
 
       const targetId = href.replace("#", "");
       const isActive = targetId === activeId;
+      const wasActive = link.classList.contains("active");
       link.classList.toggle("active", isActive);
 
-      if (isActive) {
+      if (isActive && !wasActive) {
         scrollActiveNavLinkIntoView(link);
       }
     });
   }
 
   function setActiveSection(index) {
-    state.activeIndex = clamp(index, 0, sections.length - 1);
+    const nextIndex = clamp(index, 0, sections.length - 1);
+    if (nextIndex === state.activeIndex && sections[nextIndex]?.classList.contains("active-section")) return;
+
+    state.activeIndex = nextIndex;
 
     sections.forEach((section, sectionIndex) => {
       section.classList.toggle("active-section", sectionIndex === state.activeIndex);
@@ -141,6 +161,8 @@ const VitoraNavigation = (() => {
       setActiveSection(getSectionIndexFromScroll());
       return;
     }
+
+    state.usingSectionObserver = true;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -231,6 +253,9 @@ const VitoraNavigation = (() => {
   }
 
   function init() {
+    if (state.initialized) return;
+    state.initialized = true;
+
     sections = Array.from(document.querySelectorAll("[data-section]"));
     navLinks = Array.from(document.querySelectorAll(".main-nav a"));
 
@@ -245,15 +270,26 @@ const VitoraNavigation = (() => {
     window.addEventListener(
       "scroll",
       () => {
-        updateProgress();
-        setActiveSection(getSectionIndexFromScroll());
+        runOnNextFrame("scrollTicking", () => {
+          updateProgress();
+
+          if (!state.usingSectionObserver) {
+            setActiveSection(getSectionIndexFromScroll());
+          }
+        });
       },
-      { passive: true }
+      passiveListener
     );
-    window.addEventListener("resize", () => {
-      updateProgress();
-      setActiveSection(getSectionIndexFromScroll());
-    });
+    window.addEventListener(
+      "resize",
+      () => {
+        runOnNextFrame("resizeTicking", () => {
+          updateProgress();
+          setActiveSection(getSectionIndexFromScroll());
+        });
+      },
+      passiveListener
+    );
   }
 
   return {

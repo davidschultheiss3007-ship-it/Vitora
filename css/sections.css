@@ -2907,3 +2907,130 @@ html[data-theme="light"] .floating-chip {
     min-height: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .orbit-ring,
+  .web-slide::before,
+  .web-slide::after,
+  .cover-slide::before,
+  .app-preview::after,
+  .system-map::before,
+  .journey-track::before,
+  .revenue-hero::before,
+  .revenue-hero::after {
+    display: none !important;
+  }
+
+  .floating-chip {
+    display: none !important;
+  }
+
+  .stat-strip,
+  .flow-strip,
+  .floating-chip,
+  .impact-panel,
+  .glass-card,
+  .system-node,
+  .system-core,
+  .simulator-card,
+  .tabs,
+  .module-demo,
+  .metric-card,
+  .comparison-card,
+  .pricing-card,
+  .calculator-card,
+  .roadmap-card,
+  .roadmap-detail,
+  .finale-card,
+  .slide-meta,
+  .slide-footer,
+  .presentation-card,
+  .purpose-panel,
+  .profile-card,
+  .value-card,
+  .identity-panel,
+  .stakeholder-panel,
+  .responsibility-lane,
+  .channel-panel,
+  .integration-panel,
+  .definition-panel,
+  .persona-panel,
+  .market-signal,
+  .problem-lead,
+  .problem-highlight,
+  .service-card,
+  .journey-stage,
+  .role-card,
+  .operations-side,
+  .assumption-panel,
+  .conclusion-panel,
+  .brand-stage,
+  .brand-lockup,
+  .usp-panel,
+  .location-map,
+  .thanks-panel,
+  .phone-frame,
+  .app-screen,
+  .ai-card,
+  .suggestion-card,
+  .mini-stack div,
+  .workout-list div {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+    transform-style: flat !important;
+  }
+
+  .glass-card:hover,
+  .metric-card:hover,
+  .pricing-card:hover,
+  .roadmap-card:hover,
+  .market-slide .metric-tile:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .orbit-ring,
+  .floating-chip,
+  .pulse-dot,
+  .bar span,
+  .mood-chart span,
+  .market-line span {
+    animation: none !important;
+  }
+
+  .hero-visual,
+  .app-preview {
+    min-height: auto;
+    overflow: clip;
+  }
+
+  .phone-frame {
+    width: min(302px, 82vw);
+    margin-inline: auto;
+  }
+
+  .app-screen {
+    min-height: auto;
+  }
+
+  .web-slide {
+    overflow-x: hidden;
+    contain: layout paint;
+  }
+
+  .web-slide h1,
+  .web-slide h2,
+  .web-slide h3,
+  .metric-tile strong,
+  .metric-card span,
+  .market-signal strong,
+  .simulator-score span,
+  .revenue-output strong,
+  .pricing-top strong,
+  .conclusion-panel h2,
+  .thanks-panel h2 {
+    text-shadow: none !important;
+  }
+}
