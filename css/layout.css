@@ -54,7 +54,7 @@
   justify-content: space-between;
   width: min(calc(100% - 32px), var(--max-width));
   min-height: var(--header-height);
-  padding: 10px 12px 10px 16px;
+  padding: 10px 14px 10px 18px;
   border: 1px solid rgba(190, 255, 225, 0.16);
   border-radius: 999px;
   background:
@@ -79,9 +79,9 @@ html[data-theme="light"] .site-header {
 body.is-scrolled .site-header {
   top: 8px;
   justify-content: center;
-  width: min(920px, calc(100% - 30px));
+  width: min(920px, calc(100% - 32px));
   min-height: 42px;
-  padding: 4px;
+  padding: 5px;
   border-color: transparent;
   background: transparent;
   box-shadow: none;
@@ -107,7 +107,7 @@ body.is-scrolled .site-header .header-actions {
 .site-header.compact .main-nav,
 body.is-scrolled .site-header .main-nav {
   display: flex;
-  max-width: min(900px, calc(100vw - 40px));
+  max-width: min(900px, calc(100vw - 48px));
   border-color: transparent;
   background: rgba(5, 8, 7, 0.22);
   backdrop-filter: blur(12px);
@@ -120,7 +120,7 @@ html[data-theme="light"] body.is-scrolled .site-header .main-nav {
 
 .site-header.compact .main-nav a,
 body.is-scrolled .site-header .main-nav a {
-  padding: 7px 10px;
+  padding: 8px 12px;
   background: transparent;
   font-size: 0.76rem;
 }
@@ -176,10 +176,10 @@ body.is-scrolled .site-header .main-nav a.active {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 8px;
   max-width: min(650px, 56vw);
   overflow-x: auto;
-  padding: 6px 10px;
+  padding: 6px;
   border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
@@ -192,7 +192,7 @@ body.is-scrolled .site-header .main-nav a.active {
 
 .main-nav a {
   flex: 0 0 auto;
-  padding: 10px 4px;
+  padding: 10px 12px;
   border-radius: 999px;
   color: var(--muted);
   font-size: 0.82rem;
@@ -253,7 +253,7 @@ body.is-scrolled .site-header .main-nav a.active {
 
 .nav-cta {
   border: 0;
-  padding: 0 18px;
+  padding: 0.75rem 1.2rem;
   color: #06110c;
   background: linear-gradient(135deg, var(--primary), var(--secondary) 62%, var(--accent));
   box-shadow:
@@ -263,7 +263,7 @@ body.is-scrolled .site-header .main-nav a.active {
 
 .primary-button {
   min-height: 54px;
-  padding: 0 24px;
+  padding: 0.85rem 1.5rem;
   color: #06110c;
   background: linear-gradient(135deg, var(--primary), var(--secondary) 62%, var(--accent));
   box-shadow:
@@ -273,7 +273,7 @@ body.is-scrolled .site-header .main-nav a.active {
 
 .secondary-button {
   min-height: 54px;
-  padding: 0 24px;
+  padding: 0.85rem 1.5rem;
   border: 1px solid var(--line);
   color: var(--text);
   background: rgba(8, 28, 23, 0.6);
@@ -289,8 +289,8 @@ body.is-scrolled .site-header .main-nav a.active {
 .section {
   position: relative;
   min-height: 100vh;
-  padding: 136px 20px 98px;
-  scroll-margin-top: 86px;
+  padding: 144px var(--section-x) 108px;
+  scroll-margin-top: calc(var(--header-height) + 2.25rem);
 }
 
 .section:not(.hero-section) {
@@ -306,7 +306,7 @@ body.is-scrolled .site-header .main-nav a.active {
 
 .section-heading {
   width: min(800px, 100%);
-  margin: 0 auto 42px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 
@@ -346,8 +346,9 @@ body.is-scrolled .site-header .main-nav a.active {
 
 .lead {
   max-width: 720px;
-  margin-bottom: 32px;
+  margin-bottom: 34px;
   font-size: 1.22rem;
+  line-height: 1.64;
 }
 
 .reveal {
@@ -416,7 +417,7 @@ body.is-scrolled .site-header .main-nav a.active {
   }
 
   .site-header {
-    width: min(calc(100% - 22px), var(--max-width));
+    width: min(calc(100% - 32px), var(--max-width));
   }
 
   .site-header.compact .main-nav,
@@ -425,10 +426,16 @@ body.is-scrolled .site-header .main-nav a.active {
   }
 }
 
+@media (min-width: 761px) and (max-width: 1360px) {
+  .section {
+    padding-right: max(var(--section-x), 5.75rem);
+  }
+}
+
 @media (max-width: 760px) {
   .section {
     min-height: auto;
-    padding: 118px 16px 78px;
+    padding: 122px var(--section-x) 112px;
   }
 
   .brand-copy small {
@@ -440,10 +447,25 @@ body.is-scrolled .site-header .main-nav a.active {
   }
 
   .presentation-controls {
-    right: 12px;
-    bottom: 12px;
+    right: auto;
+    bottom: 14px;
+    left: 50%;
     top: auto;
     grid-template-columns: 44px 44px 44px;
-    transform: none;
+    padding: 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(5, 8, 7, 0.68);
+    backdrop-filter: blur(18px);
+    transform: translateX(-50%);
+  }
+
+  .presentation-controls div {
+    min-height: 44px;
+  }
+
+  body.is-scrolled .presentation-controls {
+    top: 76px;
+    bottom: auto;
   }
 }

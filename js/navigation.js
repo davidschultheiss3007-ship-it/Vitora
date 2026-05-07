@@ -23,14 +23,37 @@ const VitoraNavigation = (() => {
     return activeIndex;
   }
 
+  function getScrollOffset() {
+    const header = document.getElementById("siteHeader");
+    const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+    const controls = document.querySelector(".presentation-controls");
+    const controlsBottom =
+      controls && window.innerWidth <= 760 ? controls.getBoundingClientRect().bottom : 0;
+    const breathingRoom = window.innerWidth <= 760 ? 22 : 28;
+
+    return Math.max(headerBottom, controlsBottom, 0) + breathingRoom;
+  }
+
+  function scrollElementToTop(targetElement, behavior = "smooth") {
+    if (!targetElement) return;
+
+    const targetPadding = targetElement.classList.contains("section")
+      ? Number.parseFloat(window.getComputedStyle(targetElement).paddingTop) || 0
+      : 0;
+    const targetTop =
+      targetElement.getBoundingClientRect().top + window.scrollY + targetPadding - getScrollOffset();
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior
+    });
+  }
+
   function scrollToSection(index) {
     if (!sections.length) return;
 
     const safeIndex = clamp(index, 0, sections.length - 1);
-    sections[safeIndex].scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    scrollElementToTop(sections[safeIndex]);
   }
 
   function updateProgress() {
@@ -151,10 +174,7 @@ const VitoraNavigation = (() => {
         if (!targetElement) return;
 
         event.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+        scrollElementToTop(targetElement);
       });
     });
   }
@@ -238,6 +258,7 @@ const VitoraNavigation = (() => {
 
   return {
     init,
-    scrollToSection
+    scrollToSection,
+    scrollElementToTop
   };
 })();

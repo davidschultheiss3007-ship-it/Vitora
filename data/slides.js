@@ -444,11 +444,17 @@ window.VitoraSlides = [
       {
         title: "Free access",
         price: "0 EUR",
+        href: "pages/revenue/freemium.html",
+        cta: "Explore freemium model →",
+        ariaLabel: "Open the Vitora freemium revenue model detail page",
         items: ["Basic habit tracking", "Introductory nutrition tips", "Educational content"]
       },
       {
         title: "Vitora Plus",
         price: "9.99 EUR",
+        href: "pages/revenue/subscription.html",
+        cta: "Explore subscription model →",
+        ariaLabel: "Open the Vitora subscription revenue model detail page",
         items: ["Advanced AI recommendations", "Progress analytics", "Coach-supported guidance"]
       },
       {

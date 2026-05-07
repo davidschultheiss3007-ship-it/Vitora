@@ -43,7 +43,7 @@
 }
 
 .revenue-page-inner {
-  width: min(var(--max-width), calc(100% - 40px));
+  width: min(var(--max-width), calc(100% - 48px));
   margin-inline: auto;
 }
 
@@ -57,7 +57,7 @@
   width: min(var(--max-width), calc(100% - 32px));
   min-height: 74px;
   margin: 18px auto 0;
-  padding: 12px 14px 12px 18px;
+  padding: 14px 16px 14px 20px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(5, 8, 7, 0.72);
@@ -79,7 +79,7 @@
 
 .revenue-back-link {
   min-height: 44px;
-  padding-inline: 18px;
+  padding: 0.75rem 1.2rem;
 }
 
 .revenue-hero {
@@ -137,6 +137,7 @@
 .revenue-copy-panel,
 .partner-model,
 .b2b-simulator,
+.revenue-simulator,
 .closing-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
@@ -166,6 +167,7 @@
 
 .revenue-section {
   padding: 86px 0;
+  scroll-margin-top: 112px;
 }
 
 .revenue-copy-panel {
@@ -183,18 +185,22 @@
 
 .revenue-card-grid {
   display: grid;
-  gap: 18px;
+  gap: 20px;
 }
 
 .revenue-card-grid.three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.revenue-card-grid.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .revenue-card {
   position: relative;
   overflow: hidden;
   min-height: 300px;
-  padding: 28px;
+  padding: var(--card-padding);
   transition:
     transform 0.24s var(--ease),
     border-color 0.24s var(--ease),
@@ -233,7 +239,7 @@
 }
 
 .partner-model {
-  padding: 26px;
+  padding: var(--panel-padding);
 }
 
 .partner-tabs {
@@ -241,7 +247,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 18px;
-  padding: 6px;
+  padding: 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.045);
@@ -249,11 +255,14 @@
 
 .partner-tab {
   min-height: 54px;
+  padding: 0.78rem 1rem;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   color: var(--muted-strong);
   background: transparent;
   font-weight: 880;
+  line-height: 1.15;
+  text-align: center;
   transition:
     color 0.22s var(--ease),
     border-color 0.22s var(--ease),
@@ -279,7 +288,7 @@
 }
 
 .partner-panel {
-  padding: 8px;
+  padding: 10px;
 }
 
 .partner-panel dl {
@@ -320,11 +329,12 @@
   align-items: start;
 }
 
-.b2b-simulator {
+.b2b-simulator,
+.revenue-simulator {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.76fr);
   gap: 22px;
-  padding: 26px;
+  padding: var(--panel-padding);
 }
 
 .revenue-inputs {
@@ -346,6 +356,16 @@
   white-space: nowrap;
 }
 
+.revenue-inputs input[type="number"] {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .simulator-helper {
   margin: -4px 0 2px;
   color: var(--muted);
@@ -359,7 +379,7 @@
 }
 
 .revenue-results div {
-  padding: 18px;
+  padding: 20px;
   border: 1px solid rgba(84, 242, 167, 0.24);
   border-radius: var(--radius-md);
   background: rgba(84, 242, 167, 0.08);
@@ -380,8 +400,9 @@
 .revenue-results strong {
   display: block;
   color: var(--text);
-  font-size: 1.55rem;
-  line-height: 1.05;
+  font-size: clamp(1.28rem, 2.1vw, 1.55rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .revenue-results .featured-result strong {
@@ -410,7 +431,7 @@
   position: relative;
   padding-left: 28px;
   color: var(--muted-strong);
-  line-height: 1.5;
+  line-height: 1.58;
 }
 
 .revenue-list li::before {
@@ -455,8 +476,13 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .b2b-simulator {
+  .b2b-simulator,
+  .revenue-simulator {
     grid-template-columns: 1fr;
+  }
+
+  .revenue-card-grid.four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -467,6 +493,7 @@
     align-items: stretch;
     flex-direction: column;
     gap: 12px;
+    padding: 16px;
     border-radius: var(--radius-xl);
   }
 
@@ -484,6 +511,7 @@
   }
 
   .revenue-card-grid.three,
+  .revenue-card-grid.four,
   .partner-tabs,
   .partner-panel dl,
   .revenue-list.two-column {
@@ -497,11 +525,11 @@
 
 @media (max-width: 560px) {
   .revenue-page-inner {
-    width: min(100% - 28px, var(--max-width));
+    width: min(100% - 32px, var(--max-width));
   }
 
   .revenue-hero-copy h1 {
-    font-size: 3rem;
+    font-size: clamp(3rem, 14vw, 4rem);
   }
 
   .revenue-hero-actions {
@@ -510,8 +538,25 @@
 
   .hero-point-panel,
   .partner-model,
-  .b2b-simulator {
-    padding: 18px;
+  .b2b-simulator,
+  .revenue-simulator {
+    padding: 20px;
+  }
+
+  .revenue-card,
+  .revenue-copy-panel,
+  .closing-panel {
+    padding: 1.25rem;
+  }
+
+  .revenue-card {
+    min-height: auto;
+  }
+
+  .revenue-inputs label {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .revenue-results strong {
@@ -571,7 +616,8 @@
 .revenue-hero-copy h1 {
   max-width: 980px;
   font-size: clamp(4rem, 7.2vw, 7rem);
-  line-height: 0.88;
+  line-height: 0.96;
+  overflow-wrap: break-word;
   text-shadow:
     0 0 36px rgba(89, 245, 168, 0.13),
     0 18px 46px rgba(0, 0, 0, 0.42);
@@ -588,6 +634,7 @@
 .revenue-copy-panel,
 .partner-model,
 .b2b-simulator,
+.revenue-simulator,
 .closing-panel {
   border-color: rgba(194, 255, 226, 0.16);
   background:
@@ -676,7 +723,7 @@
 
 @media (max-width: 560px) {
   .revenue-hero-copy h1 {
-    font-size: clamp(3.2rem, 15vw, 4.4rem);
+    font-size: clamp(3rem, 14vw, 4rem);
   }
 
   .partner-tab {

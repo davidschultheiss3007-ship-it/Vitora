@@ -25,6 +25,17 @@
   --radius-md: 8px;
   --radius-sm: 8px;
 
+  --space-1: 0.375rem;
+  --space-2: 0.625rem;
+  --space-3: 1rem;
+  --space-4: 1.25rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --card-padding: clamp(1.25rem, 2vw, 1.85rem);
+  --panel-padding: clamp(1.5rem, 3vw, 2.5rem);
+  --section-x: clamp(1.25rem, 3vw, 2.25rem);
+
   --max-width: 1180px;
   --header-height: 76px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

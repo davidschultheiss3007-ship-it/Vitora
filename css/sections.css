@@ -230,11 +230,11 @@ html[data-theme="light"] .floating-chip {
 }
 
 .app-preview .mini-stack div {
-  padding: 11px 12px;
+  padding: 12px 14px;
 }
 
 .app-preview .ai-card {
-  padding: 14px;
+  padding: 16px;
 }
 
 .app-preview .ai-card p {
@@ -323,9 +323,10 @@ html[data-theme="light"] .floating-chip {
 .mini-stack div,
 .workout-list div {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 13px 14px;
+  padding: 15px 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.06);
@@ -473,7 +474,7 @@ html[data-theme="light"] .floating-chip {
 
 .card-number {
   display: inline-flex;
-  margin-bottom: 48px;
+  margin-bottom: clamp(1.5rem, 3vw, 2.75rem);
   color: var(--primary);
   font-size: 0.82rem;
   font-weight: 900;
@@ -627,7 +628,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .tabs {
-  padding: 14px;
+  padding: clamp(18px, 2vw, 24px);
   border-radius: var(--radius-xl);
 }
 
@@ -635,7 +636,7 @@ html[data-theme="light"] .floating-chip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   padding: 8px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -644,11 +645,14 @@ html[data-theme="light"] .floating-chip {
 
 .tab-button {
   min-height: 48px;
+  padding: 0.7rem 1rem;
   border: 0;
   border-radius: 999px;
   color: var(--muted);
   background: transparent;
   font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
   transition:
     color 0.2s var(--ease),
     background 0.2s var(--ease);
@@ -684,22 +688,22 @@ html[data-theme="light"] .floating-chip {
 .module-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
-  gap: 18px;
+  gap: 22px;
 }
 
 .module-copy {
-  padding: 28px;
+  padding: var(--card-padding);
 }
 
 .feature-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
   margin-top: 26px;
 }
 
 .feature-list div {
-  padding: 16px;
+  padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.045);
@@ -722,7 +726,7 @@ html[data-theme="light"] .floating-chip {
 
 .module-demo {
   min-height: 520px;
-  padding: 24px;
+  padding: var(--card-padding);
   border-radius: var(--radius-xl);
   background:
     radial-gradient(circle at 80% 0%, rgba(84, 242, 167, 0.16), transparent 35%),
@@ -778,7 +782,7 @@ html[data-theme="light"] .floating-chip {
   gap: 8px;
   height: 260px;
   margin: 34px 0;
-  padding: 18px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.045);
@@ -805,7 +809,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .mental-stats div {
-  padding: 18px;
+  padding: 18px 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.045);
@@ -867,7 +871,7 @@ html[data-theme="light"] .floating-chip {
   position: relative;
   overflow: hidden;
   min-height: 420px;
-  padding: 30px;
+  padding: clamp(1.65rem, 2.4vw, 2.15rem);
   border-radius: var(--radius-lg);
   transition:
     transform 0.25s var(--ease),
@@ -908,9 +912,10 @@ html[data-theme="light"] .floating-chip {
 .pricing-top strong {
   display: block;
   margin: 10px 0 6px;
-  font-size: 4.2rem;
-  line-height: 0.9;
+  font-size: clamp(3.1rem, 4.4vw, 4.2rem);
+  line-height: 0.98;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .pricing-card ul {
@@ -941,7 +946,7 @@ html[data-theme="light"] .floating-chip {
   grid-template-columns: 1fr 0.85fr;
   gap: 30px;
   margin-top: 22px;
-  padding: 30px;
+  padding: var(--panel-padding);
   border-radius: var(--radius-xl);
 }
 
@@ -952,7 +957,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .revenue-output {
-  padding: 22px;
+  padding: 24px;
   border: 1px solid rgba(84, 242, 167, 0.28);
   border-radius: var(--radius-xl);
   background: rgba(84, 242, 167, 0.09);
@@ -966,9 +971,10 @@ html[data-theme="light"] .floating-chip {
 
 .revenue-output strong {
   color: var(--primary);
-  font-size: 3.75rem;
-  line-height: 0.95;
+  font-size: clamp(2.75rem, 4vw, 3.75rem);
+  line-height: 1;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .roadmap {
@@ -1128,6 +1134,10 @@ html[data-theme="light"] .floating-chip {
     grid-template-columns: 1fr;
   }
 
+  .tab-buttons {
+    border-radius: var(--radius-lg);
+  }
+
   .stat-strip div + div,
   .flow-strip div + div {
     border-left: 0;
@@ -1142,6 +1152,18 @@ html[data-theme="light"] .floating-chip {
   .roadmap-detail {
     padding: 22px;
     border-radius: var(--radius-xl);
+  }
+
+  .module-layout,
+  .feature-list,
+  .mental-stats,
+  .mini-stack,
+  .workout-list {
+    gap: 14px;
+  }
+
+  .module-demo {
+    min-height: auto;
   }
 
   .mega-number {
@@ -1171,13 +1193,13 @@ html[data-theme="light"] .floating-chip {
 .web-slide {
   display: flex;
   min-height: 100vh;
-  padding-bottom: 86px;
+  padding-bottom: 104px;
 }
 
 .web-slide > .section-inner {
   display: grid;
   align-content: center;
-  gap: 28px;
+  gap: 32px;
 }
 
 .web-slide h1,
@@ -1196,7 +1218,7 @@ html[data-theme="light"] .floating-chip {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   color: var(--muted);
   font-size: 0.74rem;
   font-weight: 850;
@@ -1205,7 +1227,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .slide-meta {
-  padding-bottom: 14px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1214,7 +1236,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .slide-footer {
-  padding-top: 14px;
+  padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
@@ -1223,7 +1245,7 @@ html[data-theme="light"] .floating-chip {
   align-items: center;
   gap: 8px;
   min-height: 42px;
-  padding: 0 16px;
+  padding: 0.72rem 1.05rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--text);
@@ -1273,6 +1295,10 @@ html[data-theme="light"] .floating-chip {
   box-shadow: var(--shadow);
 }
 
+.presentation-card {
+  padding: var(--card-padding);
+}
+
 .cover-layout,
 .brand-foundation,
 .market-layout,
@@ -1280,7 +1306,7 @@ html[data-theme="light"] .floating-chip {
 .location-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
-  gap: 28px;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
   align-items: stretch;
 }
 
@@ -1356,7 +1382,7 @@ html[data-theme="light"] .floating-chip {
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 .metric-grid.two {
@@ -1365,15 +1391,16 @@ html[data-theme="light"] .floating-chip {
 
 .metric-tile {
   min-height: 168px;
-  padding: 24px;
+  padding: var(--card-padding);
 }
 
 .metric-tile strong {
   display: block;
   margin-bottom: 14px;
   color: var(--primary);
-  font-size: 2.85rem;
-  line-height: 0.95;
+  font-size: clamp(2.1rem, 3.1vw, 2.85rem);
+  line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .metric-tile span {
@@ -1381,9 +1408,14 @@ html[data-theme="light"] .floating-chip {
   line-height: 1.45;
 }
 
+.market-layout .metric-tile strong {
+  font-size: clamp(1.7rem, 2.35vw, 2.25rem);
+  line-height: 1.08;
+}
+
 .slide-note {
   margin: 0;
-  padding: 18px 20px;
+  padding: 18px 22px;
   border-left: 3px solid var(--primary);
   color: var(--muted-strong);
   background: rgba(84, 242, 167, 0.08);
@@ -1396,7 +1428,7 @@ html[data-theme="light"] .floating-chip {
 .usp-panel {
   display: grid;
   align-content: center;
-  padding: 34px;
+  padding: var(--panel-padding);
 }
 
 .pillar-row,
@@ -1418,7 +1450,7 @@ html[data-theme="light"] .floating-chip {
 .problem-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
-  gap: 24px;
+  gap: clamp(1.25rem, 2.4vw, 2rem);
   align-items: stretch;
 }
 
@@ -1426,12 +1458,12 @@ html[data-theme="light"] .floating-chip {
   display: grid;
   align-content: center;
   min-height: 500px;
-  padding: 34px;
+  padding: var(--panel-padding);
 }
 
 .problem-highlight {
   margin-top: 22px;
-  padding: 22px;
+  padding: 24px;
   border-color: rgba(84, 242, 167, 0.3);
   color: var(--muted-strong);
   background: rgba(84, 242, 167, 0.09);
@@ -1448,7 +1480,7 @@ html[data-theme="light"] .floating-chip {
 
 .profile-card {
   min-height: 150px;
-  padding: 20px;
+  padding: 22px;
 }
 
 .profile-card span,
@@ -1616,7 +1648,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .takeaway-list li {
-  padding: 15px;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   color: var(--muted-strong);
@@ -1664,7 +1696,7 @@ html[data-theme="light"] .floating-chip {
 .identity-panel,
 .responsibility-lane {
   min-height: 300px;
-  padding: 28px;
+  padding: var(--card-padding);
 }
 
 .purpose-panel span,
@@ -1689,7 +1721,7 @@ html[data-theme="light"] .floating-chip {
   display: grid;
   align-content: space-between;
   min-height: 570px;
-  padding: 34px;
+  padding: var(--panel-padding);
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(85, 216, 255, 0.16), transparent 36%),
@@ -1708,7 +1740,7 @@ html[data-theme="light"] .floating-chip {
 
 .location-facts .metric-tile {
   min-height: auto;
-  padding: 16px;
+  padding: 18px;
 }
 
 .location-facts .metric-tile strong {
@@ -1723,7 +1755,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .persona-panel {
-  padding: 30px;
+  padding: var(--panel-padding);
 }
 
 .clean-list {
@@ -1738,7 +1770,7 @@ html[data-theme="light"] .floating-chip {
   position: relative;
   padding-left: 24px;
   color: var(--muted-strong);
-  line-height: 1.5;
+  line-height: 1.58;
 }
 
 .clean-list li::before {
@@ -1757,7 +1789,7 @@ html[data-theme="light"] .floating-chip {
   grid-template-columns: 1fr auto;
   gap: 18px;
   align-items: center;
-  padding: 24px;
+  padding: var(--card-padding);
 }
 
 .market-signal span {
@@ -1806,7 +1838,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .definition-panel {
-  padding: 30px;
+  padding: var(--panel-padding);
 }
 
 .definition-panel p {
@@ -1822,18 +1854,18 @@ html[data-theme="light"] .floating-chip {
 }
 
 .stakeholder-panel {
-  padding: 26px;
+  padding: var(--card-padding);
 }
 
 .stakeholder-list {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .stakeholder-list div {
   display: grid;
-  gap: 4px;
-  padding: 13px 14px;
+  gap: 6px;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.045);
@@ -1842,7 +1874,7 @@ html[data-theme="light"] .floating-chip {
 .stakeholder-list small,
 .channel-grid span {
   color: var(--muted);
-  line-height: 1.42;
+  line-height: 1.55;
 }
 
 .three-wide {
@@ -1855,20 +1887,20 @@ html[data-theme="light"] .floating-chip {
 
 .channel-panel,
 .integration-panel {
-  padding: 30px;
+  padding: var(--panel-padding);
 }
 
 .channel-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
   margin-top: 24px;
 }
 
 .channel-grid div {
   display: grid;
-  gap: 6px;
-  padding: 15px;
+  gap: 8px;
+  padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.045);
@@ -1937,7 +1969,7 @@ html[data-theme="light"] .floating-chip {
 
 @media (max-width: 720px) {
   .web-slide {
-    padding-bottom: 92px;
+    padding-bottom: 128px;
   }
 
   .web-slide h2 {
@@ -1948,6 +1980,10 @@ html[data-theme="light"] .floating-chip {
   .slide-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .slide-footer {
+    gap: 18px;
   }
 
   .market-signal {
@@ -1999,6 +2035,26 @@ html[data-theme="light"] .floating-chip {
     min-height: auto;
   }
 
+  .presentation-card,
+  .profile-card,
+  .purpose-panel,
+  .value-card,
+  .service-card,
+  .journey-stage,
+  .role-card,
+  .identity-panel,
+  .responsibility-lane,
+  .strategy-card,
+  .stakeholder-panel,
+  .channel-panel,
+  .integration-panel,
+  .definition-panel,
+  .persona-panel,
+  .operations-side,
+  .assumption-panel {
+    padding: 1.25rem;
+  }
+
   .metric-tile strong,
   .market-signal strong {
     font-size: 2.35rem;
@@ -2012,7 +2068,8 @@ html[data-theme="light"] .floating-chip {
 /* Premium Vitora landing/deck skin inspired by the supplied visual reference. */
 .web-slide {
   isolation: isolate;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .web-slide::before,
@@ -2067,7 +2124,7 @@ html[data-theme="light"] .floating-chip {
 .slide-meta {
   width: max-content;
   max-width: 100%;
-  padding: 8px 12px;
+  padding: 12px 16px;
   border: 1px solid rgba(190, 255, 225, 0.15);
   border-radius: 999px;
   background: rgba(8, 28, 23, 0.45);
@@ -2209,7 +2266,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .cover-layout {
-  grid-template-columns: minmax(560px, 1.02fr) minmax(390px, 0.88fr);
+  grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.88fr);
   gap: clamp(30px, 5vw, 72px);
   align-items: center;
 }
@@ -2240,7 +2297,7 @@ html[data-theme="light"] .floating-chip {
   max-width: 760px;
   margin-bottom: 26px;
   font-size: clamp(4.5rem, 6.25vw, 6.45rem);
-  line-height: 0.94;
+  line-height: 0.98;
   letter-spacing: 0;
   text-shadow:
     0 0 36px rgba(87, 245, 166, 0.13),
@@ -2274,7 +2331,7 @@ html[data-theme="light"] .floating-chip {
 }
 
 .hero-stats div {
-  padding: 18px 22px 0 0;
+  padding: 18px 22px 8px 0;
 }
 
 .hero-stats div + div {
@@ -2443,11 +2500,11 @@ html[data-theme="light"] .floating-chip {
 
 .chip-one {
   top: 128px;
-  left: -8px;
+  left: 10px;
 }
 
 .chip-two {
-  right: -18px;
+  right: 10px;
   top: 286px;
 }
 
@@ -2466,7 +2523,7 @@ html[data-theme="light"] .floating-chip {
 
 .cover-feature-intro {
   width: min(720px, 100%);
-  margin: -34px auto 0;
+  margin: clamp(18px, 2.6vw, 32px) auto 0;
   text-align: center;
 }
 
@@ -2487,7 +2544,7 @@ html[data-theme="light"] .floating-chip {
   justify-items: center;
   gap: 10px;
   min-height: 156px;
-  padding: 14px 20px 0;
+  padding: 18px 20px;
   text-align: center;
 }
 
@@ -2532,6 +2589,143 @@ html[data-theme="light"] .floating-chip {
 .pricing-top strong {
   color: var(--primary);
   text-shadow: 0 0 26px rgba(87, 245, 166, 0.18);
+}
+
+.market-slide .market-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.34fr);
+  align-items: start;
+}
+
+.market-slide .metric-grid {
+  counter-reset: audience-card;
+  align-items: stretch;
+  gap: clamp(1.25rem, 2.2vw, 1.75rem);
+  margin-top: clamp(1.5rem, 2.4vw, 2.1rem);
+}
+
+.market-slide .metric-tile {
+  counter-increment: audience-card;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto minmax(2.5rem, 1fr) auto auto;
+  align-content: stretch;
+  min-height: clamp(245px, 19vw, 285px);
+  padding: clamp(1.65rem, 2.6vw, 2.25rem);
+  border-color: rgba(194, 255, 226, 0.22);
+  background:
+    radial-gradient(circle at 82% 12%, rgba(87, 245, 166, 0.16), transparent 36%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.035) 48%, rgba(40, 227, 210, 0.045)),
+    rgba(7, 25, 20, 0.76);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11),
+    0 0 34px rgba(87, 245, 166, 0.08);
+}
+
+.market-slide .metric-tile::before {
+  opacity: 1;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 14% 94%, rgba(40, 227, 210, 0.12), transparent 34%);
+}
+
+.market-slide .metric-tile::after {
+  content: "Audience " counter(audience-card, decimal-leading-zero);
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  align-self: flex-start;
+  justify-self: start;
+  margin-bottom: 0;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(87, 245, 166, 0.28);
+  border-radius: 999px;
+  color: var(--primary);
+  background: rgba(87, 245, 166, 0.08);
+  box-shadow: 0 0 22px rgba(87, 245, 166, 0.1);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.market-slide .metric-tile strong,
+.market-slide .metric-tile span {
+  position: relative;
+  z-index: 1;
+}
+
+.market-slide .metric-tile strong {
+  grid-row: 3;
+  max-width: none;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.75rem, 2.05vw, 2.18rem);
+  line-height: 1.1;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  word-break: normal;
+}
+
+.market-slide .metric-tile span {
+  grid-row: 4;
+  max-width: 23ch;
+  color: var(--muted-strong);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.market-slide .metric-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(87, 245, 166, 0.46);
+  box-shadow:
+    var(--shadow),
+    0 0 38px rgba(87, 245, 166, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13);
+}
+
+@media (max-width: 1020px) {
+  .market-slide .market-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1020px) {
+  .market-slide .metric-grid .metric-tile:nth-child(3) {
+    grid-column: 1 / -1;
+    min-height: 220px;
+  }
+
+  .market-slide .metric-grid .metric-tile:nth-child(3) strong,
+  .market-slide .metric-grid .metric-tile:nth-child(3) span {
+    max-width: 28rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .market-slide .metric-grid {
+    gap: 1rem;
+  }
+
+  .market-slide .metric-tile,
+  .market-slide .metric-grid .metric-tile:nth-child(3) {
+    grid-column: auto;
+    min-height: auto;
+    padding: 1.35rem;
+  }
+
+  .market-slide .metric-tile::after {
+    margin-bottom: 0;
+  }
+
+  .market-slide .metric-tile strong {
+    max-width: none;
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .market-slide .metric-tile span {
+    max-width: none;
+  }
 }
 
 .problem-lead,
@@ -2666,7 +2860,7 @@ html[data-theme="light"] .floating-chip {
 
   .hero-stats div,
   .hero-stats div + div {
-    padding: 14px 0;
+    padding: 16px 0;
     border-left: 0;
     border-top: 1px solid rgba(190, 255, 225, 0.12);
   }
@@ -2705,7 +2899,7 @@ html[data-theme="light"] .floating-chip {
 
   .cover-feature-strip article {
     min-height: auto;
-    padding: 18px 0;
+    padding: 20px 0;
     border-top: 1px solid rgba(190, 255, 225, 0.12);
   }
 
