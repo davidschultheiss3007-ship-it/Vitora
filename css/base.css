@@ -190,3 +190,38 @@ input[type="range"] {
     font-size: 1.35rem;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(87, 245, 166, 0.1), transparent 18rem),
+      linear-gradient(145deg, #010302 0%, var(--bg) 54%, #020504 100%);
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  h1 {
+    text-shadow: none;
+  }
+}

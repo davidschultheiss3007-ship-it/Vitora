@@ -730,3 +730,52 @@
     border-radius: var(--radius-md);
   }
 }
+
+@media (max-width: 768px) {
+  .revenue-page {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(89, 245, 168, 0.1), transparent 18rem),
+      linear-gradient(145deg, #020504, var(--bg) 58%, #020504);
+  }
+
+  .revenue-topbar,
+  .hero-point-panel,
+  .hero-point-panel div,
+  .revenue-card,
+  .revenue-copy-panel,
+  .partner-model,
+  .b2b-simulator,
+  .revenue-simulator,
+  .closing-panel,
+  .partner-panel div,
+  .revenue-results div,
+  .revenue-results .featured-result,
+  .partner-tab.active,
+  .partner-tab[aria-selected="true"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+    transform-style: flat !important;
+  }
+
+  .revenue-hero::before,
+  .revenue-hero::after {
+    display: none !important;
+  }
+
+  .revenue-card:hover {
+    box-shadow: none !important;
+  }
+
+  .hero-point-panel span,
+  .revenue-card .card-number,
+  .partner-panel dt,
+  .revenue-inputs label strong,
+  .revenue-results .featured-result strong,
+  .revenue-hero-copy h1 {
+    text-shadow: none !important;
+  }
+}

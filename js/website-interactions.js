@@ -74,11 +74,22 @@ const VitoraInteractions = (() => {
     }
   }
 
+  function isMobileLikeViewport() {
+    return (
+      window.matchMedia &&
+      (window.matchMedia("(max-width: 768px)").matches || window.matchMedia("(pointer: coarse)").matches)
+    );
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
   function initRevealAnimations() {
     const revealElements = Array.from(document.querySelectorAll(".reveal"));
     if (!revealElements.length) return;
 
-    if (!("IntersectionObserver" in window)) {
+    if (isMobileLikeViewport() || prefersReducedMotion() || !("IntersectionObserver" in window)) {
       revealElements.forEach((element) => element.classList.add("visible"));
       return;
     }
@@ -415,10 +426,7 @@ const VitoraInteractions = (() => {
   }
 
   function initTiltCards() {
-    const prefersReducedMotion =
-      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion() || isMobileLikeViewport()) return;
 
     const cards = Array.from(
       document.querySelectorAll(
@@ -428,20 +436,44 @@ const VitoraInteractions = (() => {
     if (!cards.length) return;
 
     cards.forEach((card) => {
-      card.addEventListener("mousemove", (event) => {
+      let tiltFrame = 0;
+      let pendingEvent = null;
+
+      function applyTilt() {
+        tiltFrame = 0;
+        if (!pendingEvent) return;
+
         const rect = card.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
 
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
+        const x = pendingEvent.clientX - rect.left;
+        const y = pendingEvent.clientY - rect.top;
         const rotateY = ((x / rect.width) - 0.5) * 7;
         const rotateX = ((y / rect.height) - 0.5) * -7;
 
         card.style.transform = `translateY(-6px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
+      }
+
+      card.addEventListener(
+        "mousemove",
+        (event) => {
+          pendingEvent = event;
+
+          if (!tiltFrame) {
+            tiltFrame = requestAnimationFrame(applyTilt);
+          }
+        },
+        { passive: true }
+      );
 
       card.addEventListener("mouseleave", () => {
+        pendingEvent = null;
+
+        if (tiltFrame) {
+          cancelAnimationFrame(tiltFrame);
+          tiltFrame = 0;
+        }
+
         card.style.transform = "";
       });
     });
